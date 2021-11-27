@@ -1,0 +1,136 @@
+/* @charset "UTF-8";
+
+ */
+.navbar {
+    border-bottom: 1px solid #ffffff;
+    height: 100px;
+    font-family: inherit;
+    font-size: 17px;
+}
+
+
+.nav-link{
+    font-size:25px;
+}
+
+#projectname{
+    color:cornflowerblue;
+    font-family:monospace;
+    font-weight: bold;
+}
+
+#all{
+     display: flex;
+    flex-direction: column;
+    border:1px solid red;
+   
+   
+}
+
+.banner {
+    position: relative;
+    height:200px;
+    flex-grow: 2;
+    height:300px;
+    border:1px solid rgb(7, 219, 0);
+
+   
+}
+
+
+.banner_title {
+    /* color: #ffffff; */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    transform: translate( -50%, -50%);
+    /* font-size: 5rem;
+    font-weight: 600; */
+    z-index: 1;
+ 
+  
+}
+
+#main_title{
+    color: #ffffff;
+    font-size: 4.5rem;
+    font-weight: 600;
+}
+#sub_title{
+    color: #ffffff;
+    font-size: 1rem;
+    
+
+}
+
+
+.banner_img{
+
+    
+    position: absolute; top:0; left: 0;
+    width: 100%;
+    height: 100%;
+   
+
+}
+
+
+
+.contents{
+
+    flex-grow:5;
+    border:5px solid rgb(83, 81, 81);
+
+}
+
+.toolbar{
+    height:60px;
+    margin-left:10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    display: flex;
+    flex-direction: row;
+  
+}
+
+.create{
+    margin-left : 8px;
+    font-size: medium;
+    border-radius: 15px;
+    background-color:lightyellow;
+    border-color:rgb(231, 231, 174);
+    color:black;
+}
+
+.schoolclub{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+
+}
+
+
+.card{
+    /* flex-basis:20% 400px; */
+    flex:1 1 20%;
+    /* flex-grow:1;*/
+    margin: 5px;
+
+    display: flex;
+    flex-direction: column;
+
+
+}
+
+.card img{
+    width:90%;
+    
+    height:240px;
+
+}
+.card-body{
+
+}

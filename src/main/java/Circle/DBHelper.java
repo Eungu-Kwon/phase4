@@ -3,9 +3,13 @@ import java.sql.*;
 public class DBHelper {
 	   private static DBHelper instance = new DBHelper();
 	   
-	   public static final String URL = "jdbc:oracle:thin:@localhost:1521:orcl";
-	   public static final String USER_ID ="CIRCLE";
-	   public static final String USER_PASSWD ="CIRCLE";
+	   public static final String URL = "jdbc:oracle:thin:@125.6.37.219:16000:xe";
+	   public static final String USER_ID ="knucircle";
+	   public static final String USER_PASSWD ="database322";
+	   
+	   
+	  
+		
 	   
 	   
 	   //源�誘몄＜ 
