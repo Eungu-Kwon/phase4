@@ -12,14 +12,24 @@ Description: A two-column, fixed-width design with dark color scheme.
 Version    : 1.0
 Released   : 20110329
 -->
-<%	DBHelper db = DBHelper.getInstance();
-	System.out.println(request.getContextPath());
-%>
+
+<%	DBHelper db = DBHelper.getInstance();%>
+
+<!--
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+
+Name       : Sprayed Strokes   
+Description: A two-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20110329
+-->
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>The Coffee Shop</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<link href="<%=request.getContextPath()%>/board/css/default.css" rel="stylesheet" type="text/css" />
+<link href="../css/default.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div id="wrapper">
@@ -40,8 +50,25 @@ Released   : 20110329
   <!-- end #header -->
   <div id="content">
   	<div class="Article">
- 		<div id="ArticleContentBox">
-    		<p>아무거나 아무거나</p>
+        <div class="ArticleTopBtns">
+            <div class="left_area">
+
+            </div>
+            <div class="right_area">
+                <a href="https://cafe.naver.com/joonggonara?iframe_url=%2FArticleRead.nhn%3Fclubid%3D10050146%26articleid%3D881888998%26referrerAllArticles%3Dfalse%26menuid%3D155%26page%3D1%26boardtype%3DL" role="button" class="BaseButton btn_prev BaseButton--skinGray size_default"><svg aria-hidden="true" class="svg-icon ico-post-btn-arrow-up-323232"><use xlink:href="#ico-post-btn-arrow-up-323232"></use></svg><span class="BaseButton__txt">
+                    이전글
+                </span></a>
+            </div>
+
+        </div>
+ 		<div class="ArticleContentBox">
+             <div class="article_header">
+
+             </div>
+             <div class="article_container">
+				<p>아무거나 아무거나</p>
+             </div>
+    		
     	</div>
     </div> 	
 
@@ -51,9 +78,7 @@ Released   : 20110329
         <li>
           <h2>Archives</h2>
           <ul>
-            <%
-            	out.println(Tab.showTabList(db,3));
-            %>
+                  <%out.println(Board.showBoard(db, 3, 3));%>
           </ul>
         </li>
         <li>
