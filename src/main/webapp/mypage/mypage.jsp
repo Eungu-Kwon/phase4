@@ -10,16 +10,19 @@
 <%
 HttpSession sess = request.getSession();
 String id = (String)sess.getAttribute("id");
+//id = "dmsrn135";
 DBHelper dbhelper = DBHelper.getInstance();
-String query = "SELECT * FROM USERS WHERE Id = 'dmsrn135'";
+String query = "SELECT * FROM USERS WHERE Id = '" + id + "'";
 ResultSet rs = dbhelper.runSql(query);
 if (!rs.next()){
 	out.println("<script>alert('회원정보를 확인해주세요'); history.back();</script>");
+	return;
 }
 int dep = rs.getInt(5);
 %>
-	<form method="post" action="mypageresponse.jsp">
-		<section class="mypage">
+	<section class="mypage">
+		<form method="post" action="mypageresponse.jsp">
+		
 	        <h1 class="mypage">회원 정보 수정</h1>
 	        <div class="mypage" class="input">
 	            <div class="mypage" class="label">
@@ -63,7 +66,38 @@ int dep = rs.getInt(5);
 	            </select>
 	        </div>
 	        <input class="mypage" type="submit" value="설정">
-	    </section>
-	</form>
+        </form>
+        <hr>
+		<label class="circles">가입된 동아리</label>
+		
+		<%
+		out.println("<table border=\"1\">");
+		query = "SELECT CName, Cid FROM BELONGS_TO, CIRCLE WHERE User_Id = '" + id + "' AND Cid=Id";
+		ResultSet rs2 = dbhelper.runSql(query);
+		out.println("<th>이름</th><th>버튼</th>");
+		while(rs2.next()){
+			out.println("<tr>");
+			out.println("<td>" + rs2.getString(1) + "</td>");
+			out.println("<td class='del-btn'><button onclick=\"delete_btn_clicked('" + id + "', " + rs2.getString(2) + ")\"'>X</button></td>");
+			out.println("</tr>");
+		}
+		out.println("</table>");
+		%>
+		<hr>
+		<label class="circles">회원 탈퇴</label>
+		<% out.println("<button class=\"mypage\" onclick=\"delete_user_clicked('" + id + "')\">회원 탈퇴</button>"); %>
+    </section>
+    <script> 
+    function delete_btn_clicked(id, cid){
+    	var ret = confirm("동아리를 탈퇴하시겠습니까?");
+    	if(ret)
+    		window.location.href='deletecircle.jsp?id=' + id + '&cid=' + cid;
+    }
+    function delete_user_clicked(id){
+    	var ret = confirm("회원 탈퇴하시겠습니까?");
+    	if(ret)
+    		window.location.href='deleteuser.jsp?id=' + id;
+    }
+    </script>
 </body>
 </html>
