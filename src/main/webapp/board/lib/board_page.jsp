@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ page import= "Circle.*" %>
+<%@ page import= "CirclePack.*" %>
 <%@ page import= "java.sql.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <!--
@@ -13,7 +13,11 @@ Version    : 1.0
 Released   : 20110329
 -->
 
-<%	DBHelper db = DBHelper.getInstance();%>
+<%	
+	DBHelper db = DBHelper.getInstance();
+	Board board = new Board(db, request.getParameter("cid"),request.getParameter("tid"),request.getParameter("id"));
+	
+%>
 
 <!--
 Design by Free CSS Templates
@@ -27,9 +31,14 @@ Released   : 20110329
 -->
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>The Coffee Shop</title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<link href="../css/default.css" rel="stylesheet" type="text/css" />
+    <title>The Coffee Shop</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    
+    <!-- Required meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/default.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div id="wrapper">
@@ -52,23 +61,56 @@ Released   : 20110329
   	<div class="Article">
         <div class="ArticleTopBtns">
             <div class="left_area">
-
             </div>
             <div class="right_area">
-                <a href="https://cafe.naver.com/joonggonara?iframe_url=%2FArticleRead.nhn%3Fclubid%3D10050146%26articleid%3D881888998%26referrerAllArticles%3Dfalse%26menuid%3D155%26page%3D1%26boardtype%3DL" role="button" class="BaseButton btn_prev BaseButton--skinGray size_default"><svg aria-hidden="true" class="svg-icon ico-post-btn-arrow-up-323232"><use xlink:href="#ico-post-btn-arrow-up-323232"></use></svg><span class="BaseButton__txt">
-                    이전글
-                </span></a>
+              <button type="button" class="btn btn-secondary">modify</button>
+              <button type="button" class="btn btn-secondary">delete</button>
             </div>
-
         </div>
  		<div class="ArticleContentBox">
              <div class="article_header">
-
+               <h2><%=board.getTitle()%></h2>
+             </div>
+             <div class="right_area">
+              <p>Writer : <%=board.getUserId()%></p>
              </div>
              <div class="article_container">
-				<p>아무거나 아무거나</p>
+               <div class="article_board">
+                <p><%=board.getContent()%></p>
+               </div>
+               
+                <div class="CommentBox">
+                    <ul class="comment_list">
+                        <li class="CommentItem">
+                            <div class="comment_area">
+                                <p class="comment_thumb">
+                                    <img src="https://ssl.pstatic.net/static/cafe/cafe_pc/default/cafe_profile_77.png?type=c77_77" alt="프로필 사진" width="36" height="36">
+                                </p> 
+                                <div class="comment_box">
+                                    <div class="comment_nick_box">
+                                        <a>아이디</a>
+                                    </div>
+                                    <div class="comment_text_box">
+                                        <span class="text_comment">두개 합친게 60이면 절하고 사겠는데요</span>
+                                    </div>
+                                    <div class="comment_info_box">
+                                        <span class="comment_info_date">2021.11.26. 15:37</span>
+                                        <button type="button" class="btn btn-secondary">modify</button>
+                                        <button type="button" class="btn btn-secondary">delete</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="CommentWriter">
+                        <div class="mb-3" id="comment_area">
+                            <label for="exampleFormControlInput1" class="form-label">댓글</label>
+                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="댓글을 입력하세요">
+                        </div>
+                        <button type="button" class="btn btn-primary" id="comment_submit">submit</button>
+                    </div>
+                </div>
              </div>
-    		
     	</div>
     </div> 	
 
@@ -76,35 +118,14 @@ Released   : 20110329
     <div id="links">
       <ul>
         <li>
-          <h2>Archives</h2>
+          <h2>Tab</h2>
           <ul>
-                  <%out.println(Board.showBoard(db, 3, 3));%>
+          	<%
+            	out.println(Tab.showTabList(db,3));
+            %>
           </ul>
         </li>
-        <li>
-          <h2>Categories</h2>
-          <ul>
-            <li><a href="#">Donec Dictum Metus</a></li>
-            <li><a href="#">Etiam Rhoncus Volutpat</a></li>
-            <li><a href="#">Integer Gravida Nibh</a></li>
-            <li><a href="#">Maecenas Luctus Lectus</a></li>
-            <li><a href="#">Mauris Vulputate Dolor Nibh</a></li>
-            <li><a href="#">Nulla Luctus Eleifend</a></li>
-            <li><a href="#">Posuere Augue Sit Nisl</a></li>
-          </ul>
-        </li>
-        <li>
-          <h2>Blog Roll</h2>
-          <ul>
-            <li><a href="#">Donec Dictum Metus</a></li>
-            <li><a href="#">Etiam Rhoncus Volutpat</a></li>
-            <li><a href="#">Integer Gravida Nibh</a></li>
-            <li><a href="#">Maecenas Luctus Lectus</a></li>
-            <li><a href="#">Mauris Vulputate Dolor Nibh</a></li>
-            <li><a href="#">Nulla Luctus Eleifend</a></li>
-            <li><a href="#">Posuere Augue Sit Nisl</a></li>
-          </ul>
-        </li>
+
       </ul>
     </div>
     <!-- end #links -->
@@ -117,5 +138,6 @@ Released   : 20110329
   <p id="brand">The Coffee Shop</p>
 </div>
 <!-- end #footer -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ page import= "Circle.*" %>
+<%@ page import= "CirclePack.*" %>
 <%@ page import= "java.sql.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <!--
@@ -16,7 +16,12 @@ Released   : 20110329
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>The Coffee Shop</title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    
+    <!-- Required meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link href="<%=request.getContextPath()%>/board/css/default.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -40,7 +45,7 @@ Released   : 20110329
     <div id="posts">
       <%
       	
-      	out.println(Board.showBoard(db, 3, 3));
+      	out.println(Board.showBoardList(db, 3, 3));
       %>
       <div class="post">
         <h2 class="title">A Few Examples of Common Tags</h2>
@@ -73,24 +78,21 @@ Released   : 20110329
     <div id="links">
       <ul>
         <li>
-          <h2>Archives</h2>
+          <h2>동아리이름</h2>
           <ul>
-            <%
-            	out.println(Tab.showTabList(db,3));
-            %>
+            <li><a href="#">총인원 :20 </a></li>
+            <li><a href="#">분류 : 미술</a></li>
+            <li><a href="#">동아리장 : ~~~</a></li>
           </ul>
         </li>
         <li>
-          <h2>Categories</h2>
+          <h2></h2>
           <ul>
-            <li><a href="#">Donec Dictum Metus</a></li>
-            <li><a href="#">Etiam Rhoncus Volutpat</a></li>
-            <li><a href="#">Integer Gravida Nibh</a></li>
-            <li><a href="#">Maecenas Luctus Lectus</a></li>
-            <li><a href="#">Mauris Vulputate Dolor Nibh</a></li>
-            <li><a href="#">Nulla Luctus Eleifend</a></li>
-            <li><a href="#">Posuere Augue Sit Nisl</a></li>
+             <%
+            	out.println(Tab.showTabList(db,3));
+            %>
           </ul>
+          <button type="button" class="btn btn-secondary">Add Tab</button>
         </li>
         <li>
           <h2>Blog Roll</h2>
