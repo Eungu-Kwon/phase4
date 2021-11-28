@@ -15,6 +15,9 @@
 	 ResultSet rs = dbhelper.runSql(query);
 	 
 	 request.setCharacterEncoding("UTF-8");
+	 String categoryNum=request.getParameter("choose_cate");
+	 String categoryName="전체 ";
+ 	 String extraNum=request.getParameter("choose_extra"); /*  default,1 : 선택안함 2: 현재 가입가능  */
 	
 	 	
  %>
@@ -100,8 +103,9 @@
         <div class="banner">
           <!-- <div class="banner_title">Enjoy School club</div> -->
           <div class="banner_title">
-            <p id="main_title">Enjoy mini club</p>
-            <p id="sub_title">Find your hobby and make mini club. Share with other peopels</p>
+           <p id="main_title">Enjoy mini club</p>
+           <p id="sub_title">Find your hobby and make mini club. Share with other peopels</p>
+           
           </div>
           <img class="banner_img" id="upload_bg"  src="<%=request.getContextPath()%>/mainpage/images/main.jpg" alt="My Image">
         </div>
@@ -116,7 +120,15 @@
                   	   query = "select * from categorys";
 						rs = dbhelper.runSql(query);
 						while(rs.next()){
-							out.println("<option value='"+rs.getInt(1)+"'>"+rs.getString(2)+"</option>");  //1:카테고리 id 2:카테고리 이름					
+							System.out.println(String.valueOf(rs.getInt(1)).equals(categoryNum)+"");
+							if (String.valueOf(rs.getInt(1)).equals(categoryNum)){
+								out.println("<option value='"+rs.getInt(1)+"'+selected>"+rs.getString(2)+"</option>");  //1:카테고리 id 2:카테고리 이름 
+							    categoryName=rs.getString(2);
+							   
+							}
+							else{
+								out.println("<option value='"+rs.getInt(1)+"'>"+rs.getString(2)+"</option>"); 
+							}
 						}
 						%>	
 	               
@@ -126,19 +138,35 @@
 	                  <option value="1">선택 안함  </option>
 	                  <option value="2">현재 모집 중인 동아리 </option>
 	                </select>
-	                <input class="btn btn-primary" type="submit" value="Submit">
+	                <input class="btn btn-primary" type="submit" value="Submit">             
 	            </div>
-	            
+	           
             </form>
             
             <button type="button" class="btn btn-light" id="create" href="detailclub.jsp">➕ Make CLUB</button>   
+            <p>현재 카테고리 :<%=categoryName %> </p>
                   
           </div>
           <div class='schoolclub'>
  
           <%   
-
-          	query = "select cname,description,thumbnail from circle  where iscircle='N'" ;
+         
+          	if (extraNum.equals("default")|| extraNum.equals("1")){
+          		if (categoryNum.equals("default"))
+          			query = "select cname,description,thumbnail from circle where iscircle='N'";
+          		else{
+          			query = "select cname,description,thumbnail from circle where category_id="+categoryNum+" and iscircle='N'"; 
+          		}
+          	}
+          	else{ //현재 모집 중인 동아리 
+          		if (categoryNum.equals("default"))
+          			query = "select cname,description,thumbnail from circle where iscricle='N'";
+          		else{
+          			query = "select cname,description,thumbnail from circle where category_id="+categoryNum+"and iscircle='N'"; 			
+          		}
+          		
+          	}  
+          	
      	 		
 				rs = dbhelper.runSql(query);
             	int count=0;

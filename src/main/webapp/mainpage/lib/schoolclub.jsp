@@ -4,15 +4,19 @@
 <%@ page language="java" import="java.text.*, java.sql.*, Circle.DBHelper" %>
     
 <!-- //mainpage/lib 안에 있는 모든 Jsp 파일에 똑같이 위에 초기화 시켜줄거임. -->
- <%	DBHelper db = DBHelper.getInstance();
- HttpSession sess = request.getSession();
-/*  String id = (String)sess.getAttribute("id"); */
-String id="xdpzkm748";
-/* id=""; */
- DBHelper dbhelper = DBHelper.getInstance();
- String query = "";
- ResultSet rs = dbhelper.runSql(query);
- 	
+ <%	
+	 DBHelper db = DBHelper.getInstance();
+	 HttpSession sess = request.getSession();
+	/*  String id = (String)sess.getAttribute("id"); */
+	 String id="xdpzkm748";
+	/*  String id=""; */
+	 DBHelper dbhelper = DBHelper.getInstance();
+	 String query = "";
+	 ResultSet rs = dbhelper.runSql(query);
+	 
+	 request.setCharacterEncoding("UTF-8");
+	
+	 	
  %>
 <!DOCTYPE html>
 <html>
@@ -103,67 +107,65 @@ String id="xdpzkm748";
         </div>
         <div class="contents">
           <div class="toolbar">
-
-            <!-- <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-              <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-              <label class="btn btn-outline-primary" for="btnradio1">All</label>
+         
+          <form name="input" action="schoolclub_option.jsp" method="get">
+	            <div class="divide_select">
+	                <select class="form-select form-select-lg mb-3" name="choose_cate" aria-label=".form-select-lg example">
+	                  <option value="default" selected>Choose category(default is All)) </option>
+	                  <% 
+                  	   query = "select * from categorys";
+						rs = dbhelper.runSql(query);
+						while(rs.next()){
+							out.println("<option value='"+rs.getInt(1)+"'>"+rs.getString(2)+"</option>");  //1:카테고리 id 2:카테고리 이름					
+						}
+						%>	
+	               
+	                </select>
+	                <select class="form-select form-select-lg mb-3" name="choose_extra" aria-label=".form-select-lg example">
+	                  <option value="default" selected>Choose additional option</option>
+	                  <option value="1">선택 안함  </option>
+	                  <option value="2">현재 모집 중인 동아리 </option>
+	                </select>
+	                <input class="btn btn-primary" type="submit" value="Submit">
+	            </div>
+	            
+            </form>
             
-              <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-              <label class="btn btn-outline-primary" for="btnradio2">schoolclub</label>
-            
-              <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-              <label class="btn btn-outline-primary" for="btnradio3">miniclub</label>
-            </div> -->
-            
-            <select id="select_option" name="categorys" id="cotegory-select">
-              <option value="">--Please choose an option--</option>
-              <option value="dog">Dog</option>
-              <option value="cat">Cat</option>
-              <option value="hamster">Hamster</option>
-              <option value="parrot">Parrot</option>
-              <option value="spider">Spider</option>
-              <option value="goldfish">Goldfish</option>
-            </select>
-
-             <button class="create" onClick="location.href='<%=request.getContextPath()%>/mainpage/lib/makeclub.html'">➕ Make</button>
-      
-            
+            <button type="button" class="btn btn-light" id="create" href="detailclub.jsp">➕ Make CLUB</button>   
+                  
           </div>
+          <div class='schoolclub'>
+ 
+          <%   
 
-          <div class="schoolclub">
+          	query = "select cname,description,thumbnail from circle where iscircle='Y'";
+     	 		
+				rs = dbhelper.runSql(query);
+            	int count=0;
+				while(rs.next()){
+					out.println("<div class='card' style='width: 18rem;'>");
+					out.println("<img src='"+rs.getString(3)+"' class='card-img-top' alt='thumnamil'>");
+					out.println("<div class='card-body'>");
+					out.println("<h5 class='card-title'>"+rs.getString(1)+"</h5>");
+					out.println("<p class='card-text'>"+rs.getString(2)+"</p>");
+					out.println("<a href='#' class='btn btn-primary'>Go somewhere</a>");
+					out.println("</div>");
+					out.println("</div>");
+		
+					count++;
+						
+				}
+				System.out.println("총 표시되는 동아리 갯수:"+count+"");
+          %>
             <div class="card" style="width: 18rem;">
               <img src="main.png" class="card-img-top" alt="...">
               <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <a href="#" class="btn btn-primary">Go detail</a>
               </div>
             </div>
-            <div class="card" style="width: 18rem;">
-              <img src="main.png" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-              <img src="main.png" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-              <img src="main.png" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-          </div>
+           </div>
         </div>
       </div>
 

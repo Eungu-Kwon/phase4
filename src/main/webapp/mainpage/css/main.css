@@ -18,6 +18,11 @@
     font-weight: bold;
 }
 
+#school,#mini,#mypage{
+
+    color:cornflowerblue;
+}
+
 #mainsection{
     position: relative;
 }

@@ -101,13 +101,17 @@
   
 }
 
-.create{
+.divide_select{
+    display: flex;
+    flex-direction: row;
+    margin-right: 10px;
+
+}
+
+#create{
     margin-left : 8px;
-    font-size: medium;
-    border-radius: 15px;
-    background-color:lightyellow;
-    border-color:rgb(231, 231, 174);
-    color:black;
+
+    
 }
 
 .schoolclub{
@@ -121,17 +125,21 @@
 
 .card{
     /* flex-basis:20% 400px; */
+     /* flex-grow:1;*/
+
     flex:1 1 20%;
-    /* flex-grow:1;*/
+   
     margin: 5px;
+
 
     display: flex;
     flex-direction: column;
-
+    
 
 }
 
 .card img{
+    /* width:90%; */
     width:90%;
     
     height:240px;
