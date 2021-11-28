@@ -1,11 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<%@ page import= "Circle.*" %>
-<%@ page import= "java.sql.*" %>
+<%@ page language="java" import="java.text.*, java.sql.*, Circle.DBHelper" %>
     
-
- <%	DBHelper db = DBHelper.getInstance();%>
+<!-- //mainpage/lib 안에 있는 모든 Jsp 파일에 똑같이 위에 초기화 시켜줄거임. -->
+ <%	DBHelper db = DBHelper.getInstance();
+ HttpSession sess = request.getSession();
+/*  String id = (String)sess.getAttribute("id"); */
+String id="xdpzkm748";
+/* id=""; */
+ DBHelper dbhelper = DBHelper.getInstance();
+ String query = "";
+ ResultSet rs = dbhelper.runSql(query);
+ 	
+ %>
 <!DOCTYPE html>
 <html>
  <head>
@@ -13,12 +21,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-	<link href="<%=request.getContextPath()%>/mainpage/css/club.css" rel="stylesheet" type="text/css" />
+	
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
+	<link href="<%=request.getContextPath()%>/mainpage/css/club.css" rel="stylesheet" type="text/css" />
 	<title>Insert title here</title>
-<!-- 네브바 -->
+<!-- 네브바 --><!-- 
+네브바는 일단 schoolclub만 만들어놓고 나중에 다른 페이지 들에도 적용시킬 예 -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
           <a class="navbar-brand" id="projectname" href="#">ALL CLub'S</a>
@@ -41,22 +50,41 @@
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  my Info
+                  My Club's
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><p class="dropdown-item" >My clubs'</p></li>
+                  <li><p class="dropdown-item" id="school" >My school clubs'</p></li>
+                  <% if (!id.isEmpty()) 
+                  	{   query = "select cname from circle c, belongs_to b where b.cid=c.id and b.user_id='"+id+"' and c.iscircle='Y'";
+						rs = dbhelper.runSql(query);
+						while(rs.next()){
+							out.println("<li><p class='dropdown-item' href='#'>"+rs.getString(1)+"</p></li>");
+						}
+                  	}
+						%>
                   <li><hr class="dropdown-divider"></li>
-                  <li><p class="dropdown-item" >My  mini club's</p></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Go to my page</a></li>
+                  <li><p class="dropdown-item" id="mini"  >My  mini club's</p></li>
+                  <% if (!id.isEmpty()) 
+                  	{   query = "select cname from circle c, belongs_to b where b.cid=c.id and b.user_id='"+id+"' and c.iscircle='N'";
+						rs = dbhelper.runSql(query);
+						while(rs.next()){
+							out.println("<li><p class='dropdown-item' href='#' >"+rs.getString(1)+"</p></li>");
+						}
+                  	}
+						%>
+                  <li><hr class="dropdown-divider" ></li>
+                  <li><a class="dropdown-item" id="mypage" href="#" >Go to my page</a></li>  <!-- mypage url -->
                 </ul>
               </li>
               
             </ul>
-            <form class="d-flex">
-              <button class="btn btn-outline-success" type="submit">Sign-in</button> 
-              <button class="btn btn-outline-success" type="submit">Join</button>
-            </form>
+             <% if (id.isEmpty())  
+	            {
+	           	    out.println("<form class='d-flex'>");
+	           	    out.println("<button class='btn btn-outline-success' type='submit'>Sign-in</button> "); 
+	 	            out.println("<button class='btn btn-outline-success' type='submit'>Join</button>");
+	 	            out.println("</form>"); }
+            %>
           </div>
         </div>
       </nav>

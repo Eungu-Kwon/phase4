@@ -1,6 +1,5 @@
-/* @charset "UTF-8";
+@charset "UTF-8";
 
- */
 .navbar {
     border-bottom: 1px solid #ffffff;
     height: 100px;
@@ -11,18 +10,17 @@
 
 .nav-link{
     font-size:25px;
+  
 }
 
+.dropdown-item{
+    color:cornflowerblue;
+}
 
 #projectname{
     color:cornflowerblue;
     font-family:monospace;
     font-weight: bold;
-}
-
-#school,#mini,#mypage{
-
-    color:cornflowerblue;
 }
 
 #all{

@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<%@ page import= "Circle.*" %>
-<%@ page import= "java.sql.*" %>
+<%@ page language="java" import="java.text.*, java.sql.*, Circle.DBHelper" %>
     
 
  <%	DBHelper db = DBHelper.getInstance();%>
@@ -44,9 +43,9 @@
                   my Info
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><p class="dropdown-item" >My clubs'</p></li>
+                  <li><p class="dropdown-item" href="#">My clubs'</p></li>
                   <li><hr class="dropdown-divider"></li>
-                  <li><p class="dropdown-item" >My  mini club's</p></li>
+                  <li><p class="dropdown-item" href="#">My  mini club's</p></li>
                   <li><hr class="dropdown-divider"></li>
                   <li><a class="dropdown-item" href="#">Go to my page</a></li>
                 </ul>

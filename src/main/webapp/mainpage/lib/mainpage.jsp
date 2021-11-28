@@ -2,10 +2,11 @@
     pageEncoding="UTF-8"%>
     
 <%@ page import= "Circle.*" %>
-<%@ page import= "java.sql.*" %>
+<%@ page language="java" import="java.text.*, java.sql.*, Circle.DBHelper" %>
     
 <!DOCTYPE html>
- <%	DBHelper db = DBHelper.getInstance();%>
+ <%	DBHelper db = DBHelper.getInstance();
+ %>
  
 <html>
   <head>
