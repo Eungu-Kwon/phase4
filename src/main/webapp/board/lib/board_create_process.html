@@ -1,24 +1,5 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ page import= "CirclePack.*" %>
-<%@ page import= "java.sql.*" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<!--
-Design by Free CSS Templates
-http://www.freecsstemplates.org
-Released for free under a Creative Commons Attribution 2.5 License
-
-Name       : Sprayed Strokes   
-Description: A two-column, fixed-width design with dark color scheme.
-Version    : 1.0
-Released   : 20110329
--->
-
-<%	
-	DBHelper db = DBHelper.getInstance();
-	Board board = new Board(db, request.getParameter("cid"),request.getParameter("tid"),request.getParameter("id"));
-	
-%>
-
 <!--
 Design by Free CSS Templates
 http://www.freecsstemplates.org
@@ -69,45 +50,29 @@ Released   : 20110329
         </div>
  		<div class="ArticleContentBox">
              <div class="article_header">
-               <h2><%=board.getTitle()%></h2>
-             </div>
-             <div class="right_area">
-              <p>Writer : <%=board.getUserId()%></p>
              </div>
              <div class="article_container">
                <div class="article_board">
-                <p><%=board.getContent()%></p>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Title</label>
+                    <input type="email" class="form-control" id="exampleFormControlInput1" value="제목">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Content</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="6" >내용</textarea>
+                  </div>
                </div>
                
                 <div class="CommentBox">
                     <ul class="comment_list">
                         <li class="CommentItem">
                             <div class="comment_area">
-                                <p class="comment_thumb">
-                                    <img src="https://ssl.pstatic.net/static/cafe/cafe_pc/default/cafe_profile_77.png?type=c77_77" alt="프로필 사진" width="36" height="36">
-                                </p> 
-                                <div class="comment_box">
-                                    <div class="comment_nick_box">
-                                        <a>아이디</a>
-                                    </div>
-                                    <div class="comment_text_box">
-                                        <span class="text_comment">두개 합친게 60이면 절하고 사겠는데요</span>
-                                    </div>
-                                    <div class="comment_info_box">
-                                        <span class="comment_info_date">2021.11.26. 15:37</span>
-                                        <button type="button" class="btn btn-secondary">modify</button>
-                                        <button type="button" class="btn btn-secondary">delete</button>
-                                    </div>
-                                </div>
                             </div>
                         </li>
                     </ul>
                     <div class="CommentWriter">
-                        <div class="mb-3" id="comment_area">
-                            <label for="exampleFormControlInput1" class="form-label">댓글</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="댓글을 입력하세요">
-                        </div>
                         <button type="button" class="btn btn-primary" id="comment_submit">submit</button>
+                        
                     </div>
                 </div>
              </div>
@@ -117,24 +82,12 @@ Released   : 20110329
     <!-- end #posts -->
     <div id="links">
       <ul>
-      	<li>
-          <h2>동아리이름</h2>
+        <li>
+          <h2>Archives</h2>
           <ul>
-            <li><a href="#">총인원 :20 </a></li>
-            <li><a href="#">분류 : 미술</a></li>
-            <li><a href="#">동아리장 : ~~~</a></li>
+            <li><a href="#">Donec Dictum Metus</a></li>
           </ul>
         </li>
-        <li>
-        <li>
-          <h2>Tab</h2>
-          <ul>
-          	<%
-            	out.println(Tab.showTabList(db,3));
-            %>
-          </ul>
-        </li>
-
       </ul>
     </div>
     <!-- end #links -->

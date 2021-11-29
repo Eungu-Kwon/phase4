@@ -12,7 +12,9 @@ Description: A two-column, fixed-width design with dark color scheme.
 Version    : 1.0
 Released   : 20110329
 -->
-<%	DBHelper db = DBHelper.getInstance();%>
+<%	DBHelper db = DBHelper.getInstance();
+	Circle circle = new Circle(db,"3");
+%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>The Coffee Shop</title>
@@ -43,8 +45,14 @@ Released   : 20110329
   <!-- end #header -->
   <div id="content">
     <div id="posts">
+      <div class="ArticleTopBtns">
+            <div class="left_area">
+            </div>
+            <div class="right_area">
+              <button type="button" class="btn btn-secondary" href="board_pag">create board</button>
+            </div>
+        </div>
       <%
-      	
       	out.println(Board.showBoardList(db, 3, 3));
       %>
       <div class="post">
@@ -78,33 +86,20 @@ Released   : 20110329
     <div id="links">
       <ul>
         <li>
-          <h2>동아리이름</h2>
+          <h2><%=circle.getCname()%></h2>
           <ul>
-            <li><a href="#">총인원 :20 </a></li>
-            <li><a href="#">분류 : 미술</a></li>
-            <li><a href="#">동아리장 : ~~~</a></li>
+            <li><a>total number : 20 </a></li>
+            <li><a>Category : <%=circle.getCategoryName()%></a></li>
+            <li><a>Manager : <%=circle.getManager()%></a></li>
+            <li><a>phone-number : <%=circle.getPhoneNum()%></a></li>
           </ul>
         </li>
         <li>
           <h2></h2>
           <ul>
-             <%
-            	out.println(Tab.showTabList(db,3));
-            %>
+             <% out.println(Tab.showTabList(db,3));%>
           </ul>
           <button type="button" class="btn btn-secondary">Add Tab</button>
-        </li>
-        <li>
-          <h2>Blog Roll</h2>
-          <ul>
-            <li><a href="#">Donec Dictum Metus</a></li>
-            <li><a href="#">Etiam Rhoncus Volutpat</a></li>
-            <li><a href="#">Integer Gravida Nibh</a></li>
-            <li><a href="#">Maecenas Luctus Lectus</a></li>
-            <li><a href="#">Mauris Vulputate Dolor Nibh</a></li>
-            <li><a href="#">Nulla Luctus Eleifend</a></li>
-            <li><a href="#">Posuere Augue Sit Nisl</a></li>
-          </ul>
         </li>
       </ul>
     </div>

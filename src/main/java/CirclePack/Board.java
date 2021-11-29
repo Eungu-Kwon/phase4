@@ -18,13 +18,11 @@ public class Board {
 		ResultSetMetaData rsmd;
 		try {
 			while(rs.next()){
-
 				this.id = rs.getInt(1);
 				this.date = rs.getDate(2);
 				this.title = rs.getString(3);
 				this.content = rs.getString(4);
 				this.userId = rs.getString(5);
-
 			}
 			rs.close();
 		} catch (SQLException e) {
