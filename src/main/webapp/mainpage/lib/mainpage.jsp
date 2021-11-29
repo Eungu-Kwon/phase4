@@ -26,10 +26,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-	<link href="<%=request.getContextPath()%>/mainpage/css/main.css" rel="stylesheet" type="text/css" />
+	
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  	
+   
+  	<link href="<%=request.getContextPath()%>/mainpage/css/main.css" rel="stylesheet" type="text/css" />
   
     <!-- 네브바 --><!-- 
 네브바는 일단 schoolclub만 만들어놓고 나중에 다른 페이지 들에도 적용시킬 예 -->
@@ -42,7 +43,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
            	  <li class="nav-item">
-               <a class="nav-link "  href="./mainpage.jsp">Home</a>
+               <a class="nav-link active"  href="./mainpage.jsp">Home</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="./schoolclub.jsp">schoolCLUB</a>
@@ -104,6 +105,7 @@
           </div>
         </div>
       </nav>
+
     
     
     <title>Hello, world!</title>
@@ -113,8 +115,8 @@
     <div id="mainsection">
         <img id="main_image" src="<%=request.getContextPath()%>/mainpage/images/main.jpg" alt="My Image">
         <div id="search_form">
-            <form name="input" action="./detail.jsp" method="get">
-                <input id='search' type='text' placeholder="search any clubs you want."/>
+            <form name="input" action="./searchcircle.jsp" method="get">
+                <input id='search' name="cname" type='text' placeholder="search any clubs you want."/>
                 <input id="search_submit" type='submit'>
                 
             </form>

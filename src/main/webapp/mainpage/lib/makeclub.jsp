@@ -1,3 +1,25 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.text.*, java.sql.*"%>
+<%@ page import= "CirclePack.*" %>
+ <%	
+	
+	 HttpSession sess = request.getSession();
+ String id = (String)sess.getAttribute("id"); 
+	/*  String id="xdpzkm748";
+	  String id="";  */
+	 DBHelper dbhelper = DBHelper.getInstance();
+	 String query = "";
+	 ResultSet rs = dbhelper.runSql(query);
+	/*  
+	 request.setCharacterEncoding("UTF-8");
+	 String categoryNum=request.getParameter("choose_cate");
+	 String categoryName="전체 ";
+ 	 String extraNum=request.getParameter("choose_extra"); /*  default,1 : 선택안함 2:최신수 3:현재 가입  
+	 */
+	 	
+ %>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -10,6 +32,8 @@
 
     <title>Hello, world!</title>
 
+    <!-- 네브바 --><!-- 
+네브바는 일단 schoolclub만 만들어놓고 나중에 다른 페이지 들에도 적용시킬 예 -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
           <a class="navbar-brand" id="projectname" href="#">ALL CLub'S</a>
@@ -18,42 +42,71 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+           	  <li class="nav-item">
+               <a class="nav-link active"  href="./mainpage.jsp">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">schoolCLUB</a>
+                <a class="nav-link" href="./schoolclub.jsp">schoolCLUB</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">miniCLUB</a>
-              </li>
+                <a class="nav-link" href="./miniclub.jsp">miniCLUB</a>
+               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">About US</a>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  my Info
+                  My Club's
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><p class="dropdown-item" >My clubs'</p></li>
+                  <li><p class="dropdown-item" id="school" >My school clubs'</p></li>
+                  <% if (id!=null) 
+                  	{   query = "select cname,id from circle c, belongs_to b where b.cid=c.id and b.user_id='"+id+"' and c.iscircle='Y'";
+						rs = dbhelper.runSql(query);
+						while(rs.next()){
+							out.println("<li><a class='dropdown-item' href='/phase4/board/lib/circle_page.jsp?cid="+rs.getString(2)+"' >"+rs.getString(1)+"</a></li>");
+						}
+                  	}
+						%>
                   <li><hr class="dropdown-divider"></li>
-                  <li><p class="dropdown-item" >My  mini club's</p></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Go to my page</a></li>
+                  <li><p class="dropdown-item" id="mini"  >My  mini club's</p></li>
+                  <% if  (id!=null) 
+                  	{   query = "select cname,id  from circle c, belongs_to b where b.cid=c.id and b.user_id='"+id+"' and c.iscircle='N'";
+						rs = dbhelper.runSql(query);
+						while(rs.next()){
+							out.println("<li><a class='dropdown-item' href='/phase4/board/lib/circle_page.jsp?cid="+rs.getString(2)+"' >"+rs.getString(1)+"</a></li>");
+						}
+                  	}
+						%>
+                  <li><hr class="dropdown-divider" ></li>
+                  <li><a class="dropdown-item" id="mypage" href="/phase4/mypage/mypage.jsp" >Go to my page</a></li>  <!-- mypage url -->
                 </ul>
               </li>
               
             </ul>
-            <form class="d-flex">
-              <button class="btn btn-outline-success" type="submit">Sign-in</button> 
-              <button class="btn btn-outline-success" type="submit">Join</button>
-            </form>
+             <% if (id==null)  
+	            {
+	           	    out.println("<div class='d-flex'>");
+	           	    out.println("<button class='btn btn-outline-success' onclick=\"window.location.href='/phase4/sign/login.jsp';\">Sign-in</button> "); 
+	 	            /* out.println("<button class='btn btn-outline-success' href='makeclub.jsp' type='submit'>Join</button>"); */
+	 	            out.println("</div>"); 
+	 	         }
+             else{
+            	 out.println("<div class='d-flex'>");
+	           	    out.println("<button class='btn btn-outline-success' onclick=\"window.location.href='/phase4/sign/logout.jsp'; alert('Log out successed');\">Logout</button> "); 
+	           	    //out.println("<script>alert('Log out successed')</script>");
+	           	   
+	           	    
+	 	            /* out.println("<button class='btn btn-outline-success' href='makeclub.jsp' type='submit'>Join</button>"); */
+	 	            out.println("</div>"); 
+            	 
+             }
+            %>
           </div>
         </div>
-    </nav>
+      </nav>
     
-      <link href="<%=request.getContextPath()%>/mainpage/css/sub.css" rel="stylesheet" type="text/css" />
-    
+    <link href="templates/sub.css" rel="stylesheet" type="text/css" />
 
 
   </head>
@@ -73,47 +126,80 @@
             <form name="input" action="response.jsp" method="get">
 
 
-                <div class="input-group input-group-sm mb-3">
-                    <span class="input-group-text" id="inputGroup-sizing-sm">Circle Name </span>
-                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                    
+                <div class="input-group mb-3">
+                    <span class="input-group-text" >Circle Name </span>
+                    <input type="text" name="cname" class="form-control" placeholder="Make circle's name" >
+                </div>
+                <div class="input-group mb-3">
+                  <span class="input-group-text" >Description </span>
+                  <input type="text" name="descr" class="form-control" placeholder="Enter short sentence to introduce your club." >   
+                </div>
+                <div class="input-group mb-3">
+                  <span class="input-group-text" >Manager </span>
+                  <input type="text" name="id" class="form-control" placeholder="Enter your ID." >   
+                  
+                </div>
+                <div class="input-group mb-3">
+                  <span class="input-group-text" >Phone Number </span>
+                  <input type="text" name="phonenum" class="form-control" placeholder="Enter like this: 01011112222" >   
+                </div>
+                <div class="input-group mb-3">
+                  <span class="input-group-text" >Group size </span>
+                  <input type="text" name="size" class="form-control" placeholder="Enter group size. ex)40" >   
+                </div>
+                <div class="input-group mb-3">
+                  <span class="input-group-text" >Thumbnail </span>
+                  <input type="text" name="thumb" class="form-control" placeholder="Enter image url please." >   
                 </div>
 
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">Description</span>
-                    <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+
+                  <div class="form-check">
+                    <input class="form-check-input" name="mini" type="radio" name="isClub" id="isClub" checked>
+                    <label class="form-check-label" for="isClub">
+                      동아리
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" name="circle" type="radio" name="isMini" id="isMini" >
+                    <label class="form-check-label" for="isMini">
+                      소모임
+                    </label>
                   </div>
                   
-                  <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon2">Your Phone Num</span>
-                    <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+             
+	          
+	                <select class="form-select form-select-lg mb-3" name="choose_cate" aria-label=".form-select-lg example">
+	                  <option value="default" selected>Choose category </option>
+	                  <% 
+                  	   query = "select * from categorys";
+						rs = dbhelper.runSql(query);
+						while(rs.next()){
+							out.println("<option value='"+rs.getInt(1)+"'>"+rs.getString(2)+"</option>"); 
+						}
+					   %>	
+	              
+                  </select>
+
+
+                  <div class="input-date">
+                  
+                    <div class="input_style" id="start_apply">
+                      모집시작일
+                      <input type="date" name="start-date" class="input-field"  value="2000-01-01" id="r-date">
+
+                    </div class="input_style">
+                    <div>
+                           모집마감일
+                      <input type="date" name="end-date" class="input-field"  value="2000-01-01" id="r-date">
                   </div>
-            
-               
-                
-                Project name  :
-                <select name="projectName">
-                    <option value="ProductX" selected>ProductX</option>
-                    <option value="ProductY" selected>ProductY</option>
-                    <option value="ProductZ" selected>ProductZ</option>
-                    <option value="Computerization" selected>Computerization</option>
-                    <option value="Reorganization" selected>Reorganization</option>
-                    <option value="Newbenefits" selected>Newbenefits</option>
-                </select>
-                    Department  :
-                <select name="dNum">
-                    <option value="1" selected>1</option>
-                    <option value="4" selected>4</option>
-                    <option value="5" selected>5</option>
-                </select>
-                    Salary : <input type="text" name="salary"/>
+                  </div>
+
+                  <!-- <input type="image" src="/examples/images/submit_icon.png" alt="제출버튼"> -->
+                    <div id="btn_sr">
+                      <input type="submit" class="btn btn-primary" value="submit"></input>
+                      <input type="reset" class="btn btn-danger" value="reset"></input>
                       
-                    <button type="submit" class="btn btn-primary">Sign in</button>
-                <input type="submit" value="submit"/>
-		        <input type="reset" value="Reset" style="background-color: red; color: white" />
-	
-			
-		
+                  </div>
 	</form>
 
 

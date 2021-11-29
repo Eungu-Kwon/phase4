@@ -8,9 +8,9 @@
  <%	
 	
 	 HttpSession sess = request.getSession();
-	/*  String id = (String)sess.getAttribute("id"); */
-	 String id="xdpzkm748";
-	/*  String id=""; */
+ String id = (String)sess.getAttribute("id"); 
+	/*  String id="xdpzkm748";
+	  String id="";  */
 	 DBHelper dbhelper = DBHelper.getInstance();
 	 String query = "";
 	 ResultSet rs = dbhelper.runSql(query);
@@ -31,7 +31,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<link href="<%=request.getContextPath()%>/mainpage/css/club.css" rel="stylesheet" type="text/css" />
 	<title>Insert title here</title>
-<!-- 네브바 --><!-- 
+
+    <!-- 네브바 --><!-- 
 네브바는 일단 schoolclub만 만들어놓고 나중에 다른 페이지 들에도 적용시킬 예 -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
@@ -48,7 +49,7 @@
                 <a class="nav-link" href="./schoolclub.jsp">schoolCLUB</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="./miniclub.jsp">miniCLUB</a>
+                <a class="nav-link active" href="./miniclub.jsp">miniCLUB</a>
                </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">About US</a>
@@ -59,36 +60,47 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li><p class="dropdown-item" id="school" >My school clubs'</p></li>
-                  <% if (!id.isEmpty()) 
-                  	{   query = "select cname from circle c, belongs_to b where b.cid=c.id and b.user_id='"+id+"' and c.iscircle='Y'";
+                  <% if (id!=null) 
+                  	{   query = "select cname,id from circle c, belongs_to b where b.cid=c.id and b.user_id='"+id+"' and c.iscircle='Y'";
 						rs = dbhelper.runSql(query);
 						while(rs.next()){
-							out.println("<li><p class='dropdown-item' href='#'>"+rs.getString(1)+"</p></li>");
+							out.println("<li><a class='dropdown-item' href='/phase4/board/lib/circle_page.jsp?cid="+rs.getString(2)+"' >"+rs.getString(1)+"</a></li>");
 						}
                   	}
 						%>
                   <li><hr class="dropdown-divider"></li>
                   <li><p class="dropdown-item" id="mini"  >My  mini club's</p></li>
-                  <% if (!id.isEmpty()) 
-                  	{   query = "select cname from circle c, belongs_to b where b.cid=c.id and b.user_id='"+id+"' and c.iscircle='N'";
+                  <% if  (id!=null) 
+                  	{   query = "select cname,id  from circle c, belongs_to b where b.cid=c.id and b.user_id='"+id+"' and c.iscircle='N'";
 						rs = dbhelper.runSql(query);
 						while(rs.next()){
-							out.println("<li><p class='dropdown-item' href='#' >"+rs.getString(1)+"</p></li>");
+							out.println("<li><a class='dropdown-item' href='/phase4/board/lib/circle_page.jsp?cid="+rs.getString(2)+"' >"+rs.getString(1)+"</a></li>");
 						}
                   	}
 						%>
                   <li><hr class="dropdown-divider" ></li>
-                  <li><a class="dropdown-item" id="mypage" href="#" >Go to my page</a></li>  <!-- mypage url -->
+                  <li><a class="dropdown-item" id="mypage" href="/phase4/mypage/mypage.jsp" >Go to my page</a></li>  <!-- mypage url -->
                 </ul>
               </li>
               
             </ul>
-             <% if (id.isEmpty())  
+             <% if (id==null)  
 	            {
-	           	    out.println("<form class='d-flex'>");
-	           	    out.println("<button class='btn btn-outline-success' type='submit'>Sign-in</button> "); 
-	 	            out.println("<button class='btn btn-outline-success' type='submit'>Join</button>");
-	 	            out.println("</form>"); }
+	           	    out.println("<div class='d-flex'>");
+	           	    out.println("<button class='btn btn-outline-success' onclick=\"window.location.href='/phase4/sign/login.jsp';\">Sign-in</button> "); 
+	 	            /* out.println("<button class='btn btn-outline-success' href='makeclub.jsp' type='submit'>Join</button>"); */
+	 	            out.println("</div>"); 
+	 	         }
+             else{
+            	 out.println("<div class='d-flex'>");
+	           	    out.println("<button class='btn btn-outline-success' onclick=\"window.location.href='/phase4/sign/logout.jsp'; alert('Log out successed');\">Logout</button> "); 
+	           	    //out.println("<script>alert('Log out successed')</script>");
+	           	   
+	           	    
+	 	            /* out.println("<button class='btn btn-outline-success' href='makeclub.jsp' type='submit'>Join</button>"); */
+	 	            out.println("</div>"); 
+            	 
+             }
             %>
           </div>
         </div>
@@ -109,7 +121,7 @@
         <div class="contents">
           <div class="toolbar">
          
-          <form name="input" action="schoolclub_option.jsp" method="get">
+          <form name="input" action="miniclub_option.jsp" method="get">
 	            <div class="divide_select">
 	                <select class="form-select form-select-lg mb-3" name="choose_cate" aria-label=".form-select-lg example">
 	                  <option value="default" selected>Choose category(default is All)) </option>
@@ -139,17 +151,17 @@
  
           <%   
 
-          	query = "select cname,description,thumbnail from circle  where iscircle='N'" ;
+          	query = "select id, cname,description,thumbnail from circle  where iscircle='N'" ;
      	 		
 				rs = dbhelper.runSql(query);
             	int count=0;
 				while(rs.next()){
 					out.println("<div class='card' style='width: 18rem;'>");
-					out.println("<img src='"+rs.getString(3)+"' class='card-img-top' alt='thumnamil'>");
+					out.println("<img src='"+rs.getString(4)+"' class='card-img-top' alt='thumnamil'>");
 					out.println("<div class='card-body'>");
-					out.println("<h5 class='card-title'>"+rs.getString(1)+"</h5>");
-					out.println("<p class='card-text'>"+rs.getString(2)+"</p>");
-					out.println("<a href='#' class='btn btn-primary'>Go somewhere</a>");
+					out.println("<h5 class='card-title'>"+rs.getString(2)+"</h5>");
+					out.println("<p class='card-text'>"+rs.getString(3)+"</p>");
+					out.println("<button class='btn btn-outline-primary' onclick=\"window.location.href='/phase4/mainpage/lib/detailclub.jsp?cid="+rs.getString(1)+"';\">Go Detail</button> "); 
 					out.println("</div>");
 					out.println("</div>");
 		
