@@ -6,7 +6,7 @@
 .wrap {
     height: 100%;
     width: 100%;
-    background-image: url(img/background.jpg);
+    background-image: url(/phase4/mainpage/images/main.jpg);
     background-position: center;
     background-size: cover;
     position: absolute;

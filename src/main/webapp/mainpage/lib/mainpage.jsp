@@ -8,9 +8,9 @@
  <%	DBHelper db = DBHelper.getInstance();
  
  HttpSession sess = request.getSession();
-	/*  String id = (String)sess.getAttribute("id"); */
-	 String id="xdpzkm748";
-	/*  String id=""; */
+	  String id = (String)sess.getAttribute("id"); 
+	 //String id="xdpzkm748";
+	 //  String id=""; 
 	 DBHelper dbhelper = DBHelper.getInstance();
 	 String query = "";
 	 ResultSet rs = dbhelper.runSql(query);
@@ -59,7 +59,7 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li><p class="dropdown-item" id="school" >My school clubs'</p></li>
-                  <% if (!id.isEmpty()) 
+                  <% if (id!=null) 
                   	{   query = "select cname from circle c, belongs_to b where b.cid=c.id and b.user_id='"+id+"' and c.iscircle='Y'";
 						rs = dbhelper.runSql(query);
 						while(rs.next()){
@@ -69,7 +69,7 @@
 						%>
                   <li><hr class="dropdown-divider"></li>
                   <li><p class="dropdown-item" id="mini"  >My  mini club's</p></li>
-                  <% if (!id.isEmpty()) 
+                  <% if  (id!=null) 
                   	{   query = "select cname from circle c, belongs_to b where b.cid=c.id and b.user_id='"+id+"' and c.iscircle='N'";
 						rs = dbhelper.runSql(query);
 						while(rs.next()){
@@ -78,17 +78,28 @@
                   	}
 						%>
                   <li><hr class="dropdown-divider" ></li>
-                  <li><a class="dropdown-item" id="mypage" href="#" >Go to my page</a></li>  <!-- mypage url -->
+                  <li><a class="dropdown-item" id="mypage" href="/phase4/mypage/mypage.jsp" >Go to my page</a></li>  <!-- mypage url -->
                 </ul>
               </li>
               
             </ul>
-             <% if (id.isEmpty())  
+             <% if (id==null)  
 	            {
-	           	    out.println("<form class='d-flex'>");
-	           	    out.println("<button class='btn btn-outline-success' type='submit'>Sign-in</button> "); 
-	 	            out.println("<button class='btn btn-outline-success' type='submit'>Join</button>");
-	 	            out.println("</form>"); }
+	           	    out.println("<div class='d-flex'>");
+	           	    out.println("<button class='btn btn-outline-success' onclick=\"window.location.href='/phase4/sign/login.jsp';\">Sign-in</button> "); 
+	 	            /* out.println("<button class='btn btn-outline-success' href='makeclub.jsp' type='submit'>Join</button>"); */
+	 	            out.println("</div>"); 
+	 	         }
+             else{
+            	 out.println("<div class='d-flex'>");
+	           	    out.println("<button class='btn btn-outline-success' onclick=\"window.location.href='/phase4/sign/logout.jsp'; alert('Log out successed');\">Logout</button> "); 
+	           	    //out.println("<script>alert('Log out successed')</script>");
+	           	   
+	           	    
+	 	            /* out.println("<button class='btn btn-outline-success' href='makeclub.jsp' type='submit'>Join</button>"); */
+	 	            out.println("</div>"); 
+            	 
+             }
             %>
           </div>
         </div>

@@ -74,7 +74,7 @@ int dep = rs.getInt(5);
 		out.println("<table border=\"1\">");
 		query = "SELECT CName, Cid FROM BELONGS_TO, CIRCLE WHERE User_Id = '" + id + "' AND Cid=Id";
 		ResultSet rs2 = dbhelper.runSql(query);
-		out.println("<th>이름</th><th>버튼</th>");
+		out.println("<th>이름</th><th> </th>");
 		while(rs2.next()){
 			out.println("<tr>");
 			out.println("<td>" + rs2.getString(1) + "</td>");

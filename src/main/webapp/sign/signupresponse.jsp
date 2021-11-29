@@ -30,7 +30,7 @@ else{
 	else{
 		HttpSession hs = request.getSession();
 		hs.setAttribute("id", id);
-		out.println("<script>alert('가입 되었습니다!'); document.cookie='sign=aa; max-age=0;'; window.location.href='/phase4/mypage/mypage.jsp'</script>");
+		out.println("<script>alert('가입 되었습니다!'); document.cookie='sign=aa; max-age=0;'; window.location.href='/phase4/mainpage/lib/mainpage.jsp'</script>");
 		//response.sendRedirect("main.jsp");
 	}
 }

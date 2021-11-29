@@ -21,7 +21,7 @@ if(rs.next() == false){
 else{
 	HttpSession hs = request.getSession();
 	hs.setAttribute("id", rs.getString(1));
-	out.println("<script>window.location.href='/phase4/mypage/mypage.jsp'</script>");
+	out.println("<script>window.location.href='/phase4/mainpage/lib/mainpage.jsp'</script>");
 	//response.sendRedirect("main.jsp");
 }
 %>
