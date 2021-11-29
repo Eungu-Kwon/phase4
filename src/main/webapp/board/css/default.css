@@ -56,19 +56,31 @@ a:hover {
 /* article*/
 
 .Article {
+	float: right;
+	width: 510px;
     background-color: var(--skinColor);
 }
+.ArticleTopBtns {
+    padding: 0 0 14px;
+}
+.ArticleTopBtns .left_area {
+    float: left;
+}
+.ArticleTopBtns .right_area {
+    float: right;
+}
+user agent stylesheet
+di
 .Article .article_wrap {
     position: relative;
     margin: 0 auto;
     
 }
-
-#ArticleContentBox {
+.ArticleContentBox {
 	float: right;
-	width: 450px;
+	width: 659px;
     padding: 29px 29px 0;
-    border: 1px solid var(--skinLayoutBorder);
+    border: 1px solid;
     border-radius: 6px;
 }
 .Article .article_wrap {
@@ -77,7 +89,93 @@ a:hover {
     width: 860px;
     font-size: 12px;
 }
+.ArticleContentBox .article_header {
+    position: relative;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid;
+}
 
+.article_board{
+	margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+.CommentBox {
+    margin-top: -17px;
+    border-top: 1px solid #ebecef;
+}
+.CommentBox dl, ol, ul {
+    list-style: none;
+}
+.CommentBox .comment_list .CommentItem {
+    position: relative;
+    border-top: 1px solid #f2f2f2;
+	border-bottom: 1px solid #ebecef;
+}
+
+.CommentBox .comment_list .comment_area {
+    position: relative;
+    padding: 12px 23px 10px 0;
+}
+.CommentBox .comment_list .comment_box {
+    padding-left: 46px;
+}
+.CommentBox .comment_list .comment_nick_box {
+    margin-bottom: 4px;
+}
+.CommentBox .comment_list .comment_text_box {
+    position: relative;
+    font-size: 13px;
+    word-break: break-all;
+    word-wrap: break-word;
+}
+.CommentBox .comment_list .comment_info_box .comment_info_date {
+    margin-right: 8px;
+}
+.CommentBox .comment_list .comment_info_box {
+    margin-top: 7px;
+    font-size: 12px;
+    color: #979797;
+}
+.CommentBox .comment_list .comment_tool {
+    position: absolute;
+    top: 12px;
+    right: 0;
+}
+.CommentBox .comment_list .comment_text_box .text_comment {
+    line-height: 17px;
+    word-break: break-all;
+    word-wrap: break-word;
+    vertical-align: top;
+}
+.CommentBox .comment_list .comment_thumb {
+    position: absolute;
+    top: 12px;
+    left: 0;
+    width: 36px;
+    height: 36px;
+}
+.CommentBox .comment_list+.CommentWriter {
+    margin-top: 10px;
+}
+.CommentWriter .comment_inbox {
+    position: relative;
+    margin-bottom: 10px;
+}
+.CommentWriter{
+	display:flex;
+	flex-direction:column;
+	margin-bottom: 20px;
+}
+
+#comment_area{
+
+}
+#comment_submit{
+	margin-left: 10px;
+	width: 10vh;
+
+}
 /* Wrapper */
 
 #wrapper {
@@ -87,7 +185,7 @@ a:hover {
 /* Menu */
 
 #menu {
-	width: 750px;
+	width: 900px;
 	height: 60px;
 	margin: 0 auto;
 	background: url(../images/img03.jpg) no-repeat right top;
@@ -165,7 +263,7 @@ a:hover {
 /* Content */
 
 #content {
-	width: 750px;
+	width: 900px;
 	margin: 0 auto;
 }
 
@@ -177,7 +275,7 @@ a:hover {
 }
 
 #posts .post {
-	padding-bottom: 30px;
+	padding-bottom: 10px;
 }
 
 #posts .story {
