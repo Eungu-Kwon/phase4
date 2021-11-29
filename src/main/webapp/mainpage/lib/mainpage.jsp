@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<%@ page import= "Circle.*" %>
-<%@ page language="java" import="java.text.*, java.sql.*, Circle.DBHelper" %>
+
+<%@ page language="java" import="java.text.*, java.sql.*"%>
+<%@ page import= "CirclePack.*" %>
     
 <!DOCTYPE html>
- <%	DBHelper db = DBHelper.getInstance();
+ <%	
  
  HttpSession sess = request.getSession();
 	  String id = (String)sess.getAttribute("id"); 
@@ -60,20 +60,20 @@
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li><p class="dropdown-item" id="school" >My school clubs'</p></li>
                   <% if (id!=null) 
-                  	{   query = "select cname from circle c, belongs_to b where b.cid=c.id and b.user_id='"+id+"' and c.iscircle='Y'";
+                  	{   query = "select cname,id from circle c, belongs_to b where b.cid=c.id and b.user_id='"+id+"' and c.iscircle='Y'";
 						rs = dbhelper.runSql(query);
 						while(rs.next()){
-							out.println("<li><p class='dropdown-item' href='#'>"+rs.getString(1)+"</p></li>");
+							out.println("<li><a class='dropdown-item' href='/phase4/board/lib/circle_page.jsp?cid="+rs.getString(2)+"' >"+rs.getString(1)+"</a></li>");
 						}
                   	}
 						%>
                   <li><hr class="dropdown-divider"></li>
                   <li><p class="dropdown-item" id="mini"  >My  mini club's</p></li>
                   <% if  (id!=null) 
-                  	{   query = "select cname from circle c, belongs_to b where b.cid=c.id and b.user_id='"+id+"' and c.iscircle='N'";
+                  	{   query = "select cname,id  from circle c, belongs_to b where b.cid=c.id and b.user_id='"+id+"' and c.iscircle='N'";
 						rs = dbhelper.runSql(query);
 						while(rs.next()){
-							out.println("<li><p class='dropdown-item' href='#' >"+rs.getString(1)+"</p></li>");
+							out.println("<li><a class='dropdown-item' href='/phase4/board/lib/circle_page.jsp?cid="+rs.getString(2)+"' >"+rs.getString(1)+"</a></li>");
 						}
                   	}
 						%>

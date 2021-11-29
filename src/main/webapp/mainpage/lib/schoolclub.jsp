@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<%@ page language="java" import="java.text.*, java.sql.*, Circle.DBHelper" %>
+<%@ page language="java" import="java.text.*, java.sql.*"%>
+<%@ page import= "CirclePack.*" %>
     
 <!-- //mainpage/lib 안에 있는 모든 Jsp 파일에 똑같이 위에 초기화 시켜줄거임. -->
  <%	
-	 DBHelper db = DBHelper.getInstance();
+	 
 	 HttpSession sess = request.getSession();
 	/*  String id = (String)sess.getAttribute("id"); */
 	 String id="xdpzkm748";

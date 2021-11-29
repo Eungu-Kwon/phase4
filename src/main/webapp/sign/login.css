@@ -4,12 +4,12 @@
     font-family: sans-serif;
 }
 .wrap {
-    height: 100%;
-    width: 100%;
-    background-image: url(/phase4/mainpage/images/main.jpg);
+     background-image: url(images/background.jpg);
     background-position: center;
     background-size: cover;
-    position: absolute;
+    margin:0px;
+    border:1px solid red;
+    /* position: absolute; */
 }
 .form-wrap {
     width: 380px;
