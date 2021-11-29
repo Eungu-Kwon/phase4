@@ -16,7 +16,7 @@ Released   : 20110329
 <%	
 	int cid = Integer.parseInt(request.getParameter("cid"));
 	int tid = Integer.parseInt(request.getParameter("tid"));
-	int id = Integer.parseInt(request.getParameter("cid"));
+	int id = Integer.parseInt(request.getParameter("id"));
 	Board board = new Board(request.getParameter("cid"),request.getParameter("tid"),request.getParameter("id"));
 	DBHelper db = new DBHelper();
 %>
