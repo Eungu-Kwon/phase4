@@ -14,9 +14,11 @@ Released   : 20110329
 -->
 
 <%	
-	DBHelper db = DBHelper.getInstance();
-	Board board = new Board(db, request.getParameter("cid"),request.getParameter("tid"),request.getParameter("id"));
-	
+	int cid = Integer.parseInt(request.getParameter("cid"));
+	int tid = Integer.parseInt(request.getParameter("tid"));
+	int id = Integer.parseInt(request.getParameter("cid"));
+	Board board = new Board(request.getParameter("cid"),request.getParameter("tid"),request.getParameter("id"));
+	DBHelper db = new DBHelper();
 %>
 
 <!--
@@ -81,26 +83,7 @@ Released   : 20110329
                
                 <div class="CommentBox">
                     <ul class="comment_list">
-                        <li class="CommentItem">
-                            <div class="comment_area">
-                                <p class="comment_thumb">
-                                    <img src="https://ssl.pstatic.net/static/cafe/cafe_pc/default/cafe_profile_77.png?type=c77_77" alt="프로필 사진" width="36" height="36">
-                                </p> 
-                                <div class="comment_box">
-                                    <div class="comment_nick_box">
-                                        <a>아이디</a>
-                                    </div>
-                                    <div class="comment_text_box">
-                                        <span class="text_comment">두개 합친게 60이면 절하고 사겠는데요</span>
-                                    </div>
-                                    <div class="comment_info_box">
-                                        <span class="comment_info_date">2021.11.26. 15:37</span>
-                                        <button type="button" class="btn btn-secondary">modify</button>
-                                        <button type="button" class="btn btn-secondary">delete</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
+                        <%=Comment.getCommentListHTML(db, tid, cid, id)%>
                     </ul>
                     <div class="CommentWriter">
                         <div class="mb-3" id="comment_area">
@@ -125,7 +108,6 @@ Released   : 20110329
             <li><a href="#">동아리장 : ~~~</a></li>
           </ul>
         </li>
-        <li>
         <li>
           <h2>Tab</h2>
           <ul>

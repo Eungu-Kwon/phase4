@@ -1,16 +1,25 @@
 package CirclePack;
 import java.sql.*;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.Scanner;
 public class Board {
 	
 	public int id=0;
+	public int cid;
+	public int tid;
 	public Date date;
+	public String dateString;
 	public String title;
 	public String content;
 	public String userId;
+	public DBHelper db = DBHelper.getInstance();
 	
 	
-	public Board(DBHelper db, String cid, String tid, String id) {
+	public Board(String cid, String tid, String id) {
 		String query = "SELECT ID,BDATE,TITLE,CONTENT,USER_ID " + "FROM BOARD B " + "WHERE B.tid=" + tid + " AND B.cid="
 	               + cid + "AND B.id="+ id;
 		//System.out.println(query);
@@ -20,6 +29,8 @@ public class Board {
 			while(rs.next()){
 				this.id = rs.getInt(1);
 				this.date = rs.getDate(2);
+				SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd hh:mm");
+				dateString = simpleDateFormat.format(this.date);
 				this.title = rs.getString(3);
 				this.content = rs.getString(4);
 				this.userId = rs.getString(5);
@@ -30,8 +41,49 @@ public class Board {
 			e.printStackTrace();
 		}
 	}
+	public String getDateString() {
+		return dateString;
+	}
+	public void setDateString(String dateString) {
+		this.dateString = dateString;
+	}
+	public Board(String cid, String tid) {
+		LocalDateTime now = LocalDateTime.now();
+		this.cid = Integer.parseInt(cid);
+		this.tid = Integer.parseInt(tid);
+		id = getNewBoardId();
+		dateString = now.format(DateTimeFormatter.ofPattern("yyyy/MM/dd hh:mm"));
+		System.out.println(dateString);
+		//title, content, userId 는 set으로 받아옴
+	}
 	
-	
+	public int getCid() {
+		return cid;
+	}
+	public void setCid(int cid) {
+		this.cid = cid;
+	}
+	public int getTid() {
+		return tid;
+	}
+	public void setTid(int tid) {
+		this.tid = tid;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public void setDate(Date date) {
+		this.date = date;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 	public String getTitle() {
 		return title;
 	}
@@ -48,7 +100,21 @@ public class Board {
 		return id;
 	}
 		
-	
+	public int getNewBoardId() {
+		int id = 0;
+		ResultSet rs = null;
+
+		try {
+			String sql = "select max(id) from board";
+			rs = db.runSql(sql);
+			rs.next();
+			id = rs.getInt(1);
+			rs.close();
+		} catch (SQLException e) {
+			System.out.println(e);
+		}
+		return id + 1;
+	}
 	
 	public static String showBoardList(DBHelper db, int tid, int cid) {
 		String query = "SELECT ID,BDATE,TITLE,CONTENT,USER_ID " + "FROM BOARD B " + "WHERE B.tid=" + tid + " AND B.cid="

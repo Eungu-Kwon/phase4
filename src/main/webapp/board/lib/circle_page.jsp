@@ -12,6 +12,7 @@ Description: A two-column, fixed-width design with dark color scheme.
 Version    : 1.0
 Released   : 20110329
 -->
+<
 <%	DBHelper db = DBHelper.getInstance();
 	Circle circle = new Circle(db,"3");
 %>
@@ -25,6 +26,22 @@ Released   : 20110329
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link href="<%=request.getContextPath()%>/board/css/default.css" rel="stylesheet" type="text/css" />
+<style>
+#header h2 {
+	float: right;
+	width: 494px;
+	height: 34px;
+	padding: 180px 20px 0 0;
+	background: url(<%=circle.getThumbnail()%>) no-repeat;
+	text-transform: lowercase;
+	text-align: right;
+	letter-spacing: -1px;
+	font-size: 22px;
+	font-weight: normal;
+	font-style: italic;
+	color: #FFFFFF;
+}
+</style>
 </head>
 <body>
 <div id="wrapper">
@@ -49,7 +66,7 @@ Released   : 20110329
             <div class="left_area">
             </div>
             <div class="right_area">
-              <button type="button" class="btn btn-secondary" href="board_pag">create board</button>
+              <button type="button" class="btn btn-secondary" onclick="location.href='board_create_page.jsp?&cid=<%=request.getParameter("cid")%>&tid=<%=request.getParameter("tid")%>'" href="">create board</button>
             </div>
         </div>
       <%
