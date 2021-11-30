@@ -14,7 +14,12 @@ Released   : 20110329
 -->
 <
 <%	DBHelper db = DBHelper.getInstance();
-	Circle circle = new Circle(db,"3");
+	Circle circle = new Circle(db,request.getParameter("cid"));
+	int tid = 1;
+	if (request.getParameter("tid") != null){
+		tid = Integer.parseInt(request.getParameter("tid"));
+	}
+			
 %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -66,11 +71,11 @@ Released   : 20110329
             <div class="left_area">
             </div>
             <div class="right_area">
-              <button type="button" class="btn btn-secondary" onclick="location.href='board_create_page.jsp?&cid=<%=request.getParameter("cid")%>&tid=<%=request.getParameter("tid")%>'" href="">create board</button>
+              <button type="button" class="btn btn-secondary" onclick="location.href='board_create_page.jsp?&cid=<%=request.getParameter("cid")%>&tid=<%=tid%>'" href="">create board</button>
             </div>
         </div>
       <%
-      	out.println(Board.showBoardList(db, 3, 3));
+      	out.println(Board.showBoardList(db, circle.getId(), tid));
       %>
       <div class="post">
         <h2 class="title">A Few Examples of Common Tags</h2>
@@ -112,9 +117,9 @@ Released   : 20110329
           </ul>
         </li>
         <li>
-          <h2></h2>
+          <h2>Tab</h2>
           <ul>
-             <% out.println(Tab.showTabList(db,3));%>
+             <% out.println(Tab.showTabList(db,circle.getId()));%>
           </ul>
           <button type="button" class="btn btn-secondary">Add Tab</button>
         </li>

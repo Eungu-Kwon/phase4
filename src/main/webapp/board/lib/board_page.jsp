@@ -18,8 +18,9 @@ Released   : 20110329
 	int cid = Integer.parseInt(request.getParameter("cid"));
 	int tid = Integer.parseInt(request.getParameter("tid"));
 	int id = Integer.parseInt(request.getParameter("id"));
-	Board board = new Board(request.getParameter("cid"),request.getParameter("tid"),request.getParameter("id"));
 	DBHelper db = new DBHelper();
+	Board board = new Board(request.getParameter("cid"),request.getParameter("tid"),request.getParameter("id"));
+	Circle circle = new Circle(db, request.getParameter("cid"));
 %>
 
 <!--
@@ -107,13 +108,13 @@ Released   : 20110329
     <div id="links">
       <ul>
       	<li>
-          <h2>동아리이름</h2>
+          <h2><%=circle.getCname()%></h2>
           <ul>
-            <li><a href="#">총인원 :20 </a></li>
-            <li><a href="#">분류 : 미술</a></li>
-            <li><a href="#">동아리장 : ~~~</a></li>
+            <li><a>total number : 20 </a></li>
+            <li><a>Category : <%=circle.getCategoryName()%></a></li>
+            <li><a>Manager : <%=circle.getManager()%></a></li>
+            <li><a>phone-number : <%=circle.getPhoneNum()%></a></li>
           </ul>
-        </li>
         <li>
           <h2>Tab</h2>
           <ul>
