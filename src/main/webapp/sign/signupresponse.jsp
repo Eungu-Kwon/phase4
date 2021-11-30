@@ -13,7 +13,6 @@ String name = request.getParameter("reg-name");
 String email = request.getParameter("reg-email");
 String date = request.getParameter("reg-date");
 String department = request.getParameter("reg-department");
-System.out.println(date);
 
 
 if(department == null){

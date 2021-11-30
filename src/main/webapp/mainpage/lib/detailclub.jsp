@@ -17,7 +17,6 @@
 	 request.setCharacterEncoding("UTF-8");
 
 	 String cid = request.getParameter("cid");
-	 System.out.println(cid);
 	 if (cid.equals(String.valueOf(0)))
 	 {
 		out.println("<script>alert('There are no such club')</script>");

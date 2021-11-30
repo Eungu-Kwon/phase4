@@ -135,7 +135,6 @@
                   	   query = "select * from categorys";
 						rs = dbhelper.runSql(query);
 						while(rs.next()){
-							System.out.println(String.valueOf(rs.getInt(1)).equals(categoryNum)+"");
 							if (String.valueOf(rs.getInt(1)).equals(categoryNum)){
 								out.println("<option value='"+rs.getInt(1)+"'+selected>"+rs.getString(2)+"</option>");  //1:카테고리 id 2:카테고리 이름 
 							    categoryName=rs.getString(2);

@@ -25,7 +25,6 @@
 				+ request.getParameter("sel_color") + "', '" + request.getParameter("content") + "', TO_DATE('"
 				+ request.getParameter("start_date") + "', 'yyyy-mm-dd'), TO_DATE('" + request.getParameter("end_date") + "', 'yyyy-mm-dd'), '"
 				+ request.getParameter("title") + "')";
-		System.out.println(sql);
 		int i = db.updateSql(sql);
 		String msg = "게시글이 생성 되었습니다";
 		if(i == -1) msg = "게시글 생성이 실패했습니다 ";

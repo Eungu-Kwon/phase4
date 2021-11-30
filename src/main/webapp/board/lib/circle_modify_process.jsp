@@ -16,7 +16,6 @@ ResultSet rs = null;
 
 int cid = 0;
 Circle circle = new Circle(request.getParameter("cid"));
-System.out.println("cid는 "+circle.getId());
 
 String description = request.getParameter("description");
 String master= request.getParameter("manager");

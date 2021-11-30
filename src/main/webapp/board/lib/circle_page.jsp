@@ -63,8 +63,6 @@ Released   : 20110329
         </div>
       <%
       	out.println(Board.showBoardList(db, circle.getId(), tid));
-      	System.out.println(tid);
-      	System.out.println(circle.getId());
       %>
       <div class="post">
         <div class="meta">

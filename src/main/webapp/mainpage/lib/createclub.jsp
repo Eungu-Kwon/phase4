@@ -50,7 +50,6 @@ else{
 
 String sql = "insert into circle values("+String.valueOf(current_cid)+",'"+cname+"','"+master+"','"+phonenum+"','"+description+"',"+size+",'"+isClub+"',"+choose_cate+","+"TO_DATE( '"+start_date+"' , 'yyyy-mm-dd')"+","+"TO_DATE( '"+end_date+"' , 'yyyy-mm-dd'),'"+thumb+"')";
 
-System.out.println(sql);
 int result = db.updateSql(sql);
 
 if(result == -1){
