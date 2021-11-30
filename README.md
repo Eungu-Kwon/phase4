@@ -27,6 +27,7 @@ This project's purpose is to create a make Repository with a collection of defau
 <!-- Write  settings about this project -->
 **If you use this template, you can use this function**
 - Eclipse IDE for Enterprise Java and Web Developers <br></br>
+<img src="https://user-images.githubusercontent.com/68631158/144124881-4b914f44-c886-44f0-9a0c-5479d483c348.png" width="40%" height="30%" title="px(픽셀) 크기 설정" alt="RubberDuck"></img>
 ![eclipse](https://user-images.githubusercontent.com/68631158/144124881-4b914f44-c886-44f0-9a0c-5479d483c348.png)
 <br><br>
 - JDBC <br></br>
@@ -61,6 +62,7 @@ This project's purpose is to create a make Repository with a collection of defau
 
 ## Authors
 **Kyungpook-National University Student** 🧑‍💻👨‍💻👩‍💻
+![knu](https://user-images.githubusercontent.com/68631158/144125382-f0fb0165-9eb6-46b7-8448-2a47960db06f.png)</br>
   - [chanwooDEV](https://github.com/chanwooDev) - **Chanwoo Bae** - <pove2019@gmail.com>
   - [Eungu-Kwon](https://github.com/Eungu-Kwon) - **Eungu Kwon** - <dmsrn135@knu.ac.kr>
   - [meeeeju](https://github.com/meeeeju) - **meeju Kim** - <meeju06@gmail.com>
