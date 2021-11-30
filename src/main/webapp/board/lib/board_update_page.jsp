@@ -15,6 +15,17 @@ Released   : 20110329
 -->
 <% 
 	Board board = new Board(request.getParameter("cid"), request.getParameter("tid"), request.getParameter("id"));
+
+	HttpSession tempSession = request.getSession();
+	String userId = (String)tempSession.getAttribute("id");
+	if (userId.equals(board.getUserId())== false){
+		String msg = "게시글 작성자만 접근할 수 있습니다.";
+		out.println("<script>alert('"+msg+"');</script>");
+		String s= "location.href='circle_page.jsp?cid="+request.getParameter("cid")+"&tid="+request.getParameter("tid")+"';";
+		out.println("<script>"+ s+"</script>");
+		if(1==1) return;
+		
+	}
 %>
 
 

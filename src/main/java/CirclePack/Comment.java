@@ -22,7 +22,7 @@ public class Comment {
 	int cid;
 	String userId;
 	
-	public Comment(DBHelper db, int cid, int tid, int bid, int id) {
+	public Comment(String cid, String tid, String bid, String id) {
 		String query = "SELECT ID,CDate,Content,USER_ID " + "FROM Comments C " + "WHERE C.tid=" + tid + " AND C.cid="
 	               + cid + "AND C.bid="+ bid+ " and C.id = "+id;
 		//System.out.println(query);
@@ -36,9 +36,9 @@ public class Comment {
 				dateString = simpleDateFormat.format(this.date);
 				this.content = rs.getString(3);
 				this.userId = rs.getString(4);
-				this.cid = cid;
-				this.tid = tid;
-				this.bid = bid;
+				this.cid = Integer.parseInt(cid);
+				this.tid = Integer.parseInt(tid);
+				this.bid = Integer.parseInt(bid);
 			}
 			rs.close();
 		} catch (SQLException e) {
@@ -179,8 +179,7 @@ public class Comment {
 						+ "                                    </div>\r\n"
 						+ "                                    <div class=\"comment_info_box\">\r\n"
 						+ "                                        <span class=\"comment_info_date\">"+date.toString()+"</span>\r\n"
-						+ "                                        <button type=\"button\" class=\"btn btn-secondary\">modify</button>\r\n"
-						+ "                                        <button type=\"button\" class=\"btn btn-secondary\">delete</button>\r\n"
+						+ "                                        <button type=\"button\" class=\"btn btn-secondary\" onclick=\"location.href='comment_delete_process.jsp?cid="+cid+"&tid="+tid+"&bid="+bid+"&id="+id+"'\" >delete</button>\r\n"
 						+ "                                    </div>\r\n"
 						+ "                                </div>\r\n"
 						+ "                            </div>\r\n"
