@@ -148,12 +148,13 @@
 								out.println("<p class='card-text'>동아리 </p>");
 						else
 							out.println("<p class='card-text'>소모임  </p>");
+						out.println("<button class='btn btn-outline-primary' onclick=\"window.location.href='/phase4/mainpage/lib/joinclub.jsp?cid="+cid+"';\">JOIN US</button> "); 
 				}
 			
 			%>
             
            
-              <button class='btn btn-primary' onclick="window.location.href='/phase4/mainpage/lib/mainpage.jsp';">Join-us</button>
+         <!--      <button class='btn btn-primary' onclick="window.location.href='/phase4/mainpage/lib/mainpage.jsp';\">Join-us</button> -->
               <button class='btn btn-light' onclick="window.location.href='/phase4/mainpage/lib/schoolclub.jsp';">Back</button>
    
               <!-- <a href="#" class="btn btn-primary">Join US</a> -->
