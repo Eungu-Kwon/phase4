@@ -15,7 +15,7 @@ request.setCharacterEncoding("UTF-8");
 String cname = request.getParameter("cname");
 String cid="0";
 
-query = "select id from circle where cname='"+cname+"'" ;
+query = "select id from circle where cname like '%"+cname+"%'" ;
 rs = dbhelper.runSql(query);
 while(rs.next())
 	cid=String.valueOf(rs.getInt(1));
