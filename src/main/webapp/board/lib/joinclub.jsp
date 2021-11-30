@@ -37,7 +37,7 @@ if (currentsize<=csize){
 	System.out.println(sql);
 
 	int result = dbhelper.updateSql(sql);
-
+	System.out.println(result);
 	if(result == -1){
 		out.println("<script>alert('가입 실패 ');window.location.href='/phase4/mainpage/lib/mainpage.jsp' </script>");
 	}
