@@ -6,11 +6,21 @@
 	
 	HttpSession sess = request.getSession();
  	String id = (String)sess.getAttribute("id");
+ 	
 	/*  String id="xdpzkm748";
 	  String id="";  */
 	 DBHelper dbhelper = DBHelper.getInstance();
 	 String query = "";
 	 Circle circle = new Circle(request.getParameter("cid"));
+	 
+	if (id.equals(circle.getManager())== false){
+		String msg = "동아리 매니저만 접근할 수 있습니다.";
+		out.println("<script>alert('"+msg+"');</script>");
+		String s= "location.href='circle_page.jsp?cid="+circle.getId()+"';";
+		out.println("<script>"+ s+"</script>");
+		if(1==1) return;
+		
+	}
 	 
 	 ResultSet rs = null;
 	/*  

@@ -21,7 +21,6 @@ h1, h2, h3, h4, h5, h6 {
 
 h2 {
 	padding-left: 20px;
-	background: url(../images/img07.gif) no-repeat left center;
 	font-size: 22px;
 }
 
@@ -238,10 +237,9 @@ di
 	width: 104px;
 	height: 110px;
 	padding: 104px 100px 0 20px;
-	background: url(../images/img04.jpg) no-repeat;
 	line-height: 32px;
 	font-size: 30px;
-	font-style: italic;
+	font-style: bold;
 	color: #715558;
 }
 
@@ -250,13 +248,12 @@ di
 	width: 494px;
 	height: 34px;
 	padding: 180px 20px 0 0;
-	background: url(../images/img05.jpg) no-repeat;
 	text-transform: lowercase;
 	text-align: right;
 	letter-spacing: -1px;
 	font-size: 22px;
 	font-weight: normal;
-	font-style: italic;
+	font-style: bold;
 	color: #FFFFFF;
 }
 

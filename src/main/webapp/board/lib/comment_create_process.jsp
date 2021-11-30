@@ -7,14 +7,10 @@
 <%
 
 	CommentController cc = new CommentController();
-	Comment comment = new Comment(request.getParameter("cid"),request.getParameter("tid"),request.getParameter("id"));
+	Comment comment = new Comment(request.getParameter("cid"),request.getParameter("tid"),request.getParameter("bid"));
 	comment.setContent(request.getParameter("content"));
 	HttpSession tempSession = request.getSession();
-	comment.setUserId("fviocs501");
-	System.out.println(comment.getCid());
-	System.out.println(comment.getTid());
-	System.out.println(comment.getBid());
-	System.out.println(comment.getId());
+	comment.setUserId((String)tempSession.getAttribute("id"));
 	int i = cc.createProcess(comment);
 	String msg = "댓글이 생성 되었습니다";
 	if(i == -1) msg = "댓글 생성이 실패했습니다 ";

@@ -447,7 +447,6 @@ div#schedule {
 			  String month, day, str;
 			  int Circle_id = circle.getId();
 			  DBHelper dbhelper = DBHelper.getInstance();
-			  System.out.println(Circle_id);
 			  String query = "SELECT * FROM SCHEDULES WHERE CID=" + Circle_id;
 			  
 			  ResultSet rs = dbhelper.runSql(query);
@@ -457,7 +456,6 @@ div#schedule {
 				  day = getday.format(rs.getDate(6));
 				  str = rs.getString(8);
 				  str = str.replaceAll("\\\"\\\"", "\\\\\"");
-				  System.out.println("{ eventName: \"" + str + "\", calendar: '', color: '" + rs.getString(4) + "', month: '" + month + "', day: '" + day + "' },");
 				  out.println("{ eventName: \"" + str + "\", calendar: '', color: '" + rs.getString(4) + "', month: '" + month + "', day: '" + day + "' },");
 			  }
 			  %>
