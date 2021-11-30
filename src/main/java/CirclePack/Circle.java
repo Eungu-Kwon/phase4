@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 public class Circle {
 	 
+	public DBHelper db = DBHelper.getInstance();
 	public int id;
 	public String Cname;
 	public String manager;
@@ -116,7 +117,7 @@ public class Circle {
 	public Date endDate;
 	public String thumbnail;
 	
-	public Circle(DBHelper db, String id) {
+	public Circle(String id) {
 		String query = "SELECT *\r\n"
 				+ "FROM CIRCLE\r\n"
 				+ "WHERE id = "+ id;
@@ -147,6 +148,21 @@ public class Circle {
 			e.printStackTrace();
 		}
 		
+	}
+	public int getNewId() {
+		int id = 0;
+		ResultSet rs = null;
+
+		try {
+			String sql = "select max(id) from circle";
+			rs = db.runSql(sql);
+			rs.next();
+			id = rs.getInt(1);
+			rs.close();
+		} catch (SQLException e) {
+			System.out.println(e);
+		}
+		return id + 1;
 	}
 	
 	

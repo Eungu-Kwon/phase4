@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import= "CirclePack.*" %>
+<%@ page import= "CirclePack.Comment" %>
 <%@ page import= "java.sql.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <!--
@@ -14,9 +15,12 @@ Released   : 20110329
 -->
 
 <%	
-	DBHelper db = DBHelper.getInstance();
-	Board board = new Board(db, request.getParameter("cid"),request.getParameter("tid"),request.getParameter("id"));
-	
+	int cid = Integer.parseInt(request.getParameter("cid"));
+	int tid = Integer.parseInt(request.getParameter("tid"));
+	int id = Integer.parseInt(request.getParameter("id"));
+	DBHelper db = new DBHelper();
+	Board board = new Board(request.getParameter("cid"),request.getParameter("tid"),request.getParameter("id"));
+	Circle circle = new Circle(db, request.getParameter("cid"));
 %>
 
 <!--
@@ -63,8 +67,13 @@ Released   : 20110329
             <div class="left_area">
             </div>
             <div class="right_area">
-              <button type="button" class="btn btn-secondary">modify</button>
-              <button type="button" class="btn btn-secondary">delete</button>
+              <form action="board_update_page.jsp?cid=<%=request.getParameter("cid")%>&tid=<%=request.getParameter("tid")%>&id=<%=request.getParameter("id")%>" method="post" accept-charset="utf-8">
+              	<button type="submit" class="btn btn-secondary">modify</button>
+              </form>
+              <form action="board_delete_process.jsp?cid=<%=request.getParameter("cid")%>&tid=<%=request.getParameter("tid")%>&id=<%=request.getParameter("id")%>" method="post" accept-charset="utf-8">
+              	<button type="submit" class="btn btn-secondary">delete</button>
+              </form>
+              
             </div>
         </div>
  		<div class="ArticleContentBox">
@@ -81,33 +90,18 @@ Released   : 20110329
                
                 <div class="CommentBox">
                     <ul class="comment_list">
-                        <li class="CommentItem">
-                            <div class="comment_area">
-                                <p class="comment_thumb">
-                                    <img src="https://ssl.pstatic.net/static/cafe/cafe_pc/default/cafe_profile_77.png?type=c77_77" alt="프로필 사진" width="36" height="36">
-                                </p> 
-                                <div class="comment_box">
-                                    <div class="comment_nick_box">
-                                        <a>아이디</a>
-                                    </div>
-                                    <div class="comment_text_box">
-                                        <span class="text_comment">두개 합친게 60이면 절하고 사겠는데요</span>
-                                    </div>
-                                    <div class="comment_info_box">
-                                        <span class="comment_info_date">2021.11.26. 15:37</span>
-                                        <button type="button" class="btn btn-secondary">modify</button>
-                                        <button type="button" class="btn btn-secondary">delete</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
+                        <%=Comment.getCommentListHTML(db, tid, cid, id)%>
                     </ul>
                     <div class="CommentWriter">
-                        <div class="mb-3" id="comment_area">
-                            <label for="exampleFormControlInput1" class="form-label">댓글</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="댓글을 입력하세요">
-                        </div>
-                        <button type="button" class="btn btn-primary" id="comment_submit">submit</button>
+                    	<form action="comment_create_process.jsp?cid=<%=board.getCid()%>&tid=<%=board.getTid()%>&id=<%=board.getId()%>" method="post" accept-charset="utf-8">
+	                    	<div class="mb-3" id="comment_area">
+	                            <label for="exampleFormControlInput1" class="form-label">댓글</label>
+	                            <textarea class="form-control" id="exampleFormControlTextarea1"
+										rows="2" name="content" placeholder="댓글을 입력하세요"></textarea>
+	                        </div>
+	                        <button type="submit" class="btn btn-primary" id="comment_submit">submit</button>
+                    	</form>
+                        
                     </div>
                 </div>
              </div>
@@ -118,20 +112,17 @@ Released   : 20110329
     <div id="links">
       <ul>
       	<li>
-          <h2>동아리이름</h2>
+          <h2><%=circle.getCname()%></h2>
           <ul>
-            <li><a href="#">총인원 :20 </a></li>
-            <li><a href="#">분류 : 미술</a></li>
-            <li><a href="#">동아리장 : ~~~</a></li>
+            <li><a>total number : 20 </a></li>
+            <li><a>Category : <%=circle.getCategoryName()%></a></li>
+            <li><a>Manager : <%=circle.getManager()%></a></li>
+            <li><a>phone-number : <%=circle.getPhoneNum()%></a></li>
           </ul>
-        </li>
-        <li>
         <li>
           <h2>Tab</h2>
           <ul>
-          	<%
-            	out.println(Tab.showTabList(db,3));
-            %>
+             <% out.println(Tab.showTabList(db,circle.getId()));%>
           </ul>
         </li>
 
