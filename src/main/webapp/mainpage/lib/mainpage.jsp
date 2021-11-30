@@ -113,7 +113,7 @@
   <body>
 
     <div id="mainsection">
-        <img id="main_image" src="<%=request.getContextPath()%>/mainpage/images/main.jpg" alt="My Image">
+        <img id="main_image" src="<%=request.getContextPath()%>/mainpage/images/apple.jpg" alt="My Image">
         <div id="search_form">
             <form name="input" action="./searchcircle.jsp" method="get">
                 <input id='search' name="cname" type='text' placeholder="search any clubs you want."/>

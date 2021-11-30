@@ -119,7 +119,8 @@
             <p id="main_title">Make club</p>
             <!-- <p id="sub_title">Join our school clubs. It makes your School life more lively. <br>Also you can make club.</p> -->
           </div>
-          <img class="banner_img" id="upload_bg"  src="main.jpg">
+          <img class="banner_img" id="upload_bg"  src="<%=request.getContextPath()%>/mainpage/images/banana.jpg" alt="My Image"">
+       
         </div>
         <div class="contents">
 
