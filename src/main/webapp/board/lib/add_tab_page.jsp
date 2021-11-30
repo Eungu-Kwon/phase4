@@ -5,12 +5,20 @@
  <%	
 	
 	
-	/*  
-	 request.setCharacterEncoding("UTF-8");
-	 String categoryNum=request.getParameter("choose_cate");
-	 String categoryName="전체 ";
- 	 String extraNum=request.getParameter("choose_extra"); /*  default,1 : 선택안함 2:최신수 3:현재 가입  
-	 */
+	
+	request.setCharacterEncoding("UTF-8");
+ 	HttpSession tempSession = request.getSession();
+	String userId = (String)tempSession.getAttribute("id");
+	Circle circle = new Circle(request.getParameter("cid"));
+	
+	if (userId.equals(circle.getManager())== false){
+		String msg = "동아리 매니저만 접근할 수 있습니다.";
+		out.println("<script>alert('"+msg+"');</script>");
+		String s= "location.href='circle_page.jsp?cid="+circle.getId()+"';";
+		out.println("<script>"+ s+"</script>");
+		if(1==1) return;
+		
+	}
 	 	
  %>
 
