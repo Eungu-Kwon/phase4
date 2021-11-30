@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
 <%@ page language="java" import="java.text.*, java.sql.*"%>
 <%@ page import= "CirclePack.*" %>
+<%@ page import= "TimePack.TimeCheck" %>
+
+
+ 
     
 <!-- //mainpage/lib 안에 있는 모든 Jsp 파일에 똑같이 위에 초기화 시켜줄거임. -->
  <%	
@@ -18,8 +21,7 @@
 	 String categoryNum=request.getParameter("choose_cate");
 	 String categoryName="전체 ";
  	 String extraNum=request.getParameter("choose_extra"); /*  default,1 : 선택안함 2:최신수 3:현재 가입  */
-	
-	 	
+  	
  %>
 <!DOCTYPE html>
 <html>
@@ -170,16 +172,8 @@
         		else{
         			query = "select id,cname,description,thumbnail from circle where category_id="+categoryNum+" and iscircle='Y'"; 
         		}
-        	}
-        	else{ //현재 모집 중인 동아리 
-        		if (categoryNum.equals("default"))
-        			query = "select id,cname,description,thumbnail from circle where iscircle='Y'";
-        		else{
-        			query = "select id,cname,description,thumbnail from circle where category_id="+categoryNum+"and iscircle='Y'"; 			
-        		}
         		
-        	}  
-				rs = dbhelper.runSql(query);
+        		rs = dbhelper.runSql(query);
             	int count=0;
 				while(rs.next()){
 					out.println("<div class='card' style='width: 18rem;'>");
@@ -197,6 +191,56 @@
 						
 				}
 				System.out.println("총 표시되는 동아리 갯수:"+count+"");
+        		
+        		
+        		
+        	}
+        	else{ //현재 모집 중인 동아리 
+        		if (categoryNum.equals("default"))
+        			query = "select id,cname,description,thumbnail,start_date,end_date from circle where iscircle='Y'";
+        		else{
+        			query = "select id,cname,description,thumbnail,start_date,end_date from circle where category_id="+categoryNum+"and iscircle='Y'"; 			
+        		}
+        		int count=0;
+            	String StartD="";
+            	String EndD="";
+            	
+            	TimeCheck tcheck=new TimeCheck();
+            	String CurrentD=tcheck.getCurrentDate();
+            	
+            	System.out.println(CurrentD);
+        	
+        		rs = dbhelper.runSql(query);
+            	
+				while(rs.next()){
+					StartD=String.valueOf(rs.getDate(5));
+					EndD=String.valueOf(rs.getDate(6));
+					StartD=StartD+" 11:40:11";
+					CurrentD=CurrentD+" 11:40:11";
+					EndD=EndD+" 11:40:11";
+					Boolean inDate=tcheck.getValidDate(StartD, EndD, CurrentD);
+					if (inDate)
+					{
+						out.println("<div class='card' style='width: 18rem;'>");
+						out.println("<img src='"+rs.getString(4)+"' class='card-img-top' alt='thumnamil'>");
+						out.println("<div class='card-body'>");
+						out.println("<h5 class='card-title'>"+rs.getString(2)+"</h5>");
+						out.println("<p class='card-text'>"+rs.getString(3)+"</p>");
+						System.out.println(rs.getString(1));
+						out.println("<button class='btn btn-outline-primary' onclick=\"window.location.href='/phase4/mainpage/lib/detailclub.jsp?cid="+rs.getString(1)+"';\">Go Detail</button> "); 
+						//out.println("<a href='./detailclub.jsp?cid="+rs.getString(1)+"' class='btn btn-primary'>Go detail</a>");
+						out.println("</div>");
+						out.println("</div>");
+						count++;
+						
+					}
+	
+				}
+				System.out.println("총 표시되는 동아리 갯수:"+count+"");
+        		
+        		
+        	}  
+				
           %>
 
            </div>
