@@ -93,11 +93,15 @@ Released   : 20110329
                         <%=Comment.getCommentListHTML(db, tid, cid, id)%>
                     </ul>
                     <div class="CommentWriter">
-                        <div class="mb-3" id="comment_area">
-                            <label for="exampleFormControlInput1" class="form-label">댓글</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="댓글을 입력하세요">
-                        </div>
-                        <button type="button" class="btn btn-primary" id="comment_submit">submit</button>
+                    	<form action="comment_create_process.jsp?cid=<%=board.getCid()%>&tid=<%=board.getTid()%>&id=<%=board.getId()%>" method="post" accept-charset="utf-8">
+	                    	<div class="mb-3" id="comment_area">
+	                            <label for="exampleFormControlInput1" class="form-label">댓글</label>
+	                            <textarea class="form-control" id="exampleFormControlTextarea1"
+										rows="2" name="content" placeholder="댓글을 입력하세요"></textarea>
+	                        </div>
+	                        <button type="submit" class="btn btn-primary" id="comment_submit">submit</button>
+                    	</form>
+                        
                     </div>
                 </div>
              </div>

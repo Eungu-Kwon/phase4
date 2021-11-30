@@ -23,7 +23,7 @@
 		//String s = "board_page.jsp?cid="+board.getCid()+"&tid="+board.getTid()+"&id="+board.getId();
 		String s= "location.href='board_page.jsp?cid="+board.getCid()+"&tid="+board.getTid()+"&id="+board.getId()+"';";
 		out.println("<script>"+ s+"</script>");
-		//response.sendRedirect(s);
+	
 	}
 	else{
 		String s= "location.href='circle_page.jsp?cid="+board.getCid()+"&tid="+board.getTid()+"';";

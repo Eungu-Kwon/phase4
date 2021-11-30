@@ -4,6 +4,8 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class Comment {
@@ -12,6 +14,8 @@ public class Comment {
 	int id;
 	Date date;
 	String dateString;
+
+
 	String content;
 	int	bid;
 	int tid;
@@ -40,8 +44,23 @@ public class Comment {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		
+		}	
+	}
+	public Comment(String cid, String tid, String bid) {
+		LocalDateTime now = LocalDateTime.now();
+		this.cid = Integer.parseInt(cid);
+		this.tid = Integer.parseInt(tid);
+		this.bid = Integer.parseInt(bid);
+		id = getNewId();
+		dateString = now.format(DateTimeFormatter.ofPattern("yyyy/MM/dd hh:mm"));
+	
+		//title, content, userId 는 set으로 받아옴
+	}
+	public String getDateString() {
+		return dateString;
+	}
+	public void setDateString(String dateString) {
+		this.dateString = dateString;
 	}
 	public int getId() {
 		return id;
