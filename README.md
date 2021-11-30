@@ -45,8 +45,9 @@ This project's purpose is to create a make Repository with a collection of defau
 2. Create New Repository
 3. Update Readme and Others(Other features are noted in comments.)
 
+
  ```
- 주의사항
+ <h3>주의사항</h3>
  자바 패키지가 import 되지 않는 경우: 해당하는 import 코드를 지웠다가 다시 적으면 해결가능
  자바 패키지 : TimePack ,CirclePack
 
