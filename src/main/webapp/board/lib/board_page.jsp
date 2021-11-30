@@ -122,9 +122,7 @@ Released   : 20110329
         <li>
           <h2>Tab</h2>
           <ul>
-          	<%
-            	out.println(Tab.showTabList(db,3));
-            %>
+             <% out.println(Tab.showTabList(db,circle.getId()));%>
           </ul>
         </li>
 

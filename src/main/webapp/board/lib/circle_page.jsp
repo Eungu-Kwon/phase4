@@ -34,10 +34,11 @@ Released   : 20110329
 <style>
 #header h2 {
 	float: right;
-	width: 494px;
-	height: 34px;
+	width: 100vh;
+	height: 100vh;
 	padding: 180px 20px 0 0;
 	background: url(<%=circle.getThumbnail()%>) no-repeat;
+	backgrount-
 	text-transform: lowercase;
 	text-align: right;
 	letter-spacing: -1px;
@@ -76,6 +77,8 @@ Released   : 20110329
         </div>
       <%
       	out.println(Board.showBoardList(db, circle.getId(), tid));
+      	System.out.println(tid);
+      	System.out.println(circle.getId());
       %>
       <div class="post">
         <h2 class="title">A Few Examples of Common Tags</h2>

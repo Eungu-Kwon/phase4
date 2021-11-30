@@ -118,22 +118,21 @@ public class Board {
 		return id + 1;
 	}
 	
-	public static String showBoardList(DBHelper db, int tid, int cid) {
+	public static String showBoardList(DBHelper db, int cid, int tid) {
 		String query = "SELECT ID,BDATE,TITLE,CONTENT,USER_ID " + "FROM BOARD B " + "WHERE B.tid=" + tid + " AND B.cid="
 	               + cid + "ORDER BY BDATE DESC";
-		//System.out.println(query);
 		ResultSet rs = db.runSql(query);
 		StringBuffer result = new StringBuffer();
 		ResultSetMetaData rsmd;
 		try {
 			while(rs.next()){
+				
 				result.append("<div class=\"post\">");
 				int id = rs.getInt(1);
 				Date date = rs.getDate(2);
 				String title = rs.getString(3);
 				String content = rs.getString(4);
 				String userId = rs.getString(5);
-				
 				result.append("<h2 class=\"title\"><a href=\"board_page.jsp?cid="+cid+"&tid="+tid+"&id="+id+"\">" + title+"</a></h2>");
 				result.append("<p class=\"meta\"><span class=\"date\">"+ date.toString() + "</span><span class=\"posted\">Posted by <a href=\"#\">" +userId +"</a></span></p>");
 				result.append("</div>");
