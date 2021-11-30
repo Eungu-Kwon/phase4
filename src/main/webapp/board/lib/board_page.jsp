@@ -20,7 +20,7 @@ Released   : 20110329
 	int id = Integer.parseInt(request.getParameter("id"));
 	DBHelper db = new DBHelper();
 	Board board = new Board(request.getParameter("cid"),request.getParameter("tid"),request.getParameter("id"));
-	Circle circle = new Circle(db, request.getParameter("cid"));
+	Circle circle = new Circle(request.getParameter("cid"));
 %>
 
 <!--
