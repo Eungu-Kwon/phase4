@@ -61,10 +61,11 @@ And repeat
 
 
 ## Authors
-  - [Always0ne](https://github.com/Always0ne) - **SangIl Hwang** - <si8363@soongsil.ac.kr>
+* **Kyungpook-National University Student** 🧑‍💻👨‍💻👩‍💻
+  - [chanwooDEV](https://github.com/chanwooDev) - **Chanwoo Bae** - <pove2019@gmail.com>
+  - [Eungu-Kwon](https://github.com/Eungu-Kwon) - **Eungu Kwon** - <dmsrn135@knu.ac.kr>
+  - [meeeeju](https://github.com/meeeeju) - **meeju Kim** - <meeju06@gmail.com>
 
-See also the list of [contributors](https://github.com/always0ne/readmeTemplate/contributors)
-who participated in this project.
 <!--
 ## Used or Referenced Projects
  - [referenced Project](project link) - **LICENSE** - little-bit introduce
