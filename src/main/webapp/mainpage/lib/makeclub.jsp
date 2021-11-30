@@ -61,7 +61,7 @@
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li><p class="dropdown-item" id="school" >My school clubs'</p></li>
                   <% if (id!=null) 
-                  	{   query = "select cname,id from circle c, belongs_to b where b.cid=c.id and b.user_id='"+id+"' and c.iscircle='Y'";
+                  	{   query = "select c.cname,c.id from circle c, belongs_to b where b.cid=c.id and b.user_id='"+id+"' and c.iscircle='Y'";
 						rs = dbhelper.runSql(query);
 						while(rs.next()){
 							out.println("<li><a class='dropdown-item' href='/phase4/board/lib/circle_page.jsp?cid="+rs.getString(2)+"' >"+rs.getString(1)+"</a></li>");
@@ -71,7 +71,7 @@
                   <li><hr class="dropdown-divider"></li>
                   <li><p class="dropdown-item" id="mini"  >My  mini club's</p></li>
                   <% if  (id!=null) 
-                  	{   query = "select cname,id  from circle c, belongs_to b where b.cid=c.id and b.user_id='"+id+"' and c.iscircle='N'";
+                  	{   query = "select c.cname,c.id  from circle c, belongs_to b where b.cid=c.id and b.user_id='"+id+"' and c.iscircle='N'";
 						rs = dbhelper.runSql(query);
 						while(rs.next()){
 							out.println("<li><a class='dropdown-item' href='/phase4/board/lib/circle_page.jsp?cid="+rs.getString(2)+"' >"+rs.getString(1)+"</a></li>");
@@ -151,21 +151,23 @@
                   <span class="input-group-text" >Thumbnail </span>
                   <input type="text" name="thumb" class="form-control" placeholder="Enter image url please." >   
                 </div>
-
-
-                  <div class="form-check">
-                    <input class="form-check-input"  type="radio" name="isClub" id="isClub" checked>
+                
+                <input type="radio" name="isClub" value="true">동아리 
+				<input type="radio" name="isClub" value="false">소모임 
+	
+              <%--     <div class="form-check">
+                    <input class="form-check-input"  type="radio" name="isClub" id="isClub">
                     <label class="form-check-label" for="isClub">
                       동아리
                     </label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input"  type="radio" name="isMini" id="isMini" >
+                    <input class="form-check-input"  type="radio" name="isClub" id=" >
                     <label class="form-check-label" for="isMini">
                       소모임
                     </label>
                   </div>
-                  
+                   --%>
              
 	          
 	                <select class="form-select form-select-lg mb-3" name="choose_cate" aria-label=".form-select-lg example">

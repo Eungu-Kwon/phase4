@@ -8,8 +8,7 @@
 <%
 DBHelper dbhelper = DBHelper.getInstance();
 String query = "";
-ResultSet rs = dbhelper.runSql(query);
-
+ResultSet rs = null;
 request.setCharacterEncoding("UTF-8");
 
 HttpSession sess = request.getSession();
@@ -34,7 +33,7 @@ while(rs.next())
 
 if (currentsize<=csize){
 	
-	String sql = "insert into belongs_to values("+cid+",'"+userid+"');";
+	String sql = "insert into belongs_to values("+cid+",'"+userid+"')";
 	System.out.println(sql);
 
 	int result = dbhelper.updateSql(sql);
@@ -44,7 +43,7 @@ if (currentsize<=csize){
 	}
 	else{
 		
-		out.println("<script>alert('club 가입 되었습니다! myClub's에서 더욱 자세히 확인 가능합니다.');  window.location.href='/phase4/mainpage/lib/mainpage.jsp'</script>");
+		out.println("<script>alert('club 가입 되었습니다! myClubs에서 더욱 자세히 확인 가능합니다.');  window.location.href='/phase4/mainpage/lib/mainpage.jsp';</script>");
 		//response.sendRedirect("main.jsp");
 	}
 	
