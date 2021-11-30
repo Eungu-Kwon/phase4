@@ -2,6 +2,7 @@ package CirclePack;
 import java.sql.*;
 public class Tab {
 
+	DBHelper db = DBHelper.getInstance();
 	
 	public static String showTabList(DBHelper db, int cid) {
 		String query = "select tname,id\r\n"
@@ -26,4 +27,5 @@ public class Tab {
 		}
 		return result.toString();
 	}
+	
 }
