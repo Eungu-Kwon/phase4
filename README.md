@@ -47,14 +47,11 @@ This project's purpose is to create a make Repository with a collection of defau
 
 
 
- ```
- 주의 사항 ⚠️
- 
- 1. 자바 패키지가 import 되지 않는 경우: 해당하는 import 코드를 지웠다가 다시 적으면 해결가능
+ **`주의사항`**
+ * 자바 패키지가 import 되지 않는 경우: 해당하는 import 코드를 지웠다가 다시 적으면 해결가능
     자바 패키지 : TimePack ,CirclePack
- 2.
+ 
 
-```
  
   
 
