@@ -14,7 +14,7 @@ Released   : 20110329
 -->
 <
 <%	DBHelper db = DBHelper.getInstance();
-	Circle circle = new Circle(db,request.getParameter("cid"));
+	Circle circle = new Circle(request.getParameter("cid"));
 	int tid = 1;
 	if (request.getParameter("tid") != null){
 		tid = Integer.parseInt(request.getParameter("tid"));
