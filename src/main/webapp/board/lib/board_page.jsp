@@ -122,7 +122,11 @@ Released   : 20110329
         <li>
           <h2>Tab</h2>
           <ul>
-             <% out.println(Tab.showTabList(db,circle.getId()));%>
+             <%
+             out.println("<li><a href=\"schedule.jsp?cid=" + circle.getId() + "\">스케줄</a></li>");
+             out.println(Tab.showTabList(db,circle.getId()));
+             %>
+             
           </ul>
         </li>
 

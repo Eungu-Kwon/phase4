@@ -1,19 +1,114 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ page language="java" import="java.text.*, java.sql.*"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import= "CirclePack.*" %>
+<%@ page import= "java.sql.*, java.text.*" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
 
-<!DOCTYPE html>
-<html>
-    <head>
-        <script src="https://momentjs.com/downloads/moment-with-locales.js"></script>
-        <link rel="stylesheet" href="/phase4/schedule/schedule.css">
-    </head>
-    <body>
-        
-        <div id="schedule"></div>
-    </body>
+Name       : Sprayed Strokes   
+Description: A two-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20110329
+-->
+
+<%	
+	int cid = Integer.parseInt(request.getParameter("cid"));
+	DBHelper db = new DBHelper();
+	Circle circle = new Circle(request.getParameter("cid"));
+%>
+
+<!--
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+
+Name       : Sprayed Strokes   
+Description: A two-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20110329
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>The Coffee Shop</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     
+    <script src="https://momentjs.com/downloads/moment-with-locales.js"></script>
+    <link rel="stylesheet" href="/phase4/schedule/schedule.css">
+        
+    <!-- Required meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/default.css" rel="stylesheet" type="text/css" />
+<style>
+div#schedule {
+    width: fit-content;
+}
+</style>
+</head>
+<body>
+<div id="wrapper">
+  <div id="menu">
+    <ul>
+      <li><a href="#" accesskey="1">Home</a></li>
+      <li class="active"><a href="#" accesskey="2">Photos</a></li>
+      <li><a href="#" accesskey="3">Links</a></li>
+      <li><a href="#" accesskey="4">About</a></li>
+      <li><a href="#" accesskey="5">Contact</a></li>
+    </ul>
+  </div>
+  <!-- end #menu -->
+  <div id="header">
+    <h1>The Coffee Shop</h1>
+    <h2><a href="#">Free CSS Templates</a></h2>
+  </div>
+  <!-- end #header -->
+  <div id="content">
+  	<div class="Article">
+        <div id="schedule"></div>
+    </div> 	
+
+    <!-- end #posts -->
+    <div id="links">
+      <ul>
+      	<li>
+          <h2><%=circle.getCname()%></h2>
+          <ul>
+            <li><a>total number : 20 </a></li>
+            <li><a>Category : <%=circle.getCategoryName()%></a></li>
+            <li><a>Manager : <%=circle.getManager()%></a></li>
+            <li><a>phone-number : <%=circle.getPhoneNum()%></a></li>
+          </ul>
+        <li>
+          <h2>Tab</h2>
+          <ul>
+             <% 
+             out.println("<li><a href=\"schedule.jsp?cid=" + circle.getId() + "\">스케줄</a></li>");
+             out.println(Tab.showTabList(db,circle.getId()));
+             %>
+             <li><a href="circle_page.jsp?cid=" + circle.getId()></a></li>
+          </ul>
+        </li>
+
+      </ul>
+      <a style="width: 100%;" href="schedule_create_page.jsp?cid=<%out.print(circle.getId());%>">스케줄 추가하기</a>
+    </div>
+    <!-- end #links -->
+    <div style="clear: both;">&nbsp;</div>
+    
+  </div>
+</div>
+<!-- end #content -->
+<div id="footer">
+  <p id="legal">Copyright &copy; 2007 The Coffee Shop. Designed by <a href="http://www.freecsstemplates.org/">Free CSS Templates</a></p>
+  <p id="brand">The Coffee Shop</p>
+</div>
+<!-- end #footer -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+
 	<script>
 	!function() {
 
@@ -350,8 +445,9 @@
 			  SimpleDateFormat getMonth = new SimpleDateFormat("MM");
 			  SimpleDateFormat getday = new SimpleDateFormat("dd");
 			  String month, day, str;
-			  String Circle_id = "81";
+			  int Circle_id = circle.getId();
 			  DBHelper dbhelper = DBHelper.getInstance();
+			  System.out.println(Circle_id);
 			  String query = "SELECT * FROM SCHEDULES WHERE CID=" + Circle_id;
 			  
 			  ResultSet rs = dbhelper.runSql(query);
@@ -361,6 +457,7 @@
 				  day = getday.format(rs.getDate(6));
 				  str = rs.getString(8);
 				  str = str.replaceAll("\\\"\\\"", "\\\\\"");
+				  System.out.println("{ eventName: \"" + str + "\", calendar: '', color: '" + rs.getString(4) + "', month: '" + month + "', day: '" + day + "' },");
 				  out.println("{ eventName: \"" + str + "\", calendar: '', color: '" + rs.getString(4) + "', month: '" + month + "', day: '" + day + "' },");
 			  }
 			  %>
@@ -373,4 +470,5 @@
 
 		}();
 	</script>
+	
 </html>

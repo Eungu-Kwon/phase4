@@ -4,13 +4,15 @@
 <%@ page import= "CirclePack.*" %>
  <%	
 	
-	 HttpSession sess = request.getSession();
- String id = (String)sess.getAttribute("id"); 
+	HttpSession sess = request.getSession();
+ 	String id = (String)sess.getAttribute("id");
 	/*  String id="xdpzkm748";
 	  String id="";  */
 	 DBHelper dbhelper = DBHelper.getInstance();
 	 String query = "";
-	 ResultSet rs = dbhelper.runSql(query);
+	 Circle circle = new Circle(request.getParameter("cid"));
+	 
+	 ResultSet rs = null;
 	/*  
 	 request.setCharacterEncoding("UTF-8");
 	 String categoryNum=request.getParameter("choose_cate");
@@ -61,7 +63,7 @@
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li><p class="dropdown-item" id="school" >My school clubs'</p></li>
                   <% if (id!=null) 
-                  	{   query = "select c.cname,c.id from circle c, belongs_to b where b.cid=c.id and b.user_id='"+id+"' and c.iscircle='Y'";
+                  	{   query = "select cname,id from circle c, belongs_to b where b.cid=c.id and b.user_id='"+id+"' and c.iscircle='Y'";
 						rs = dbhelper.runSql(query);
 						while(rs.next()){
 							out.println("<li><a class='dropdown-item' href='/phase4/board/lib/circle_page.jsp?cid="+rs.getString(2)+"' >"+rs.getString(1)+"</a></li>");
@@ -71,7 +73,7 @@
                   <li><hr class="dropdown-divider"></li>
                   <li><p class="dropdown-item" id="mini"  >My  mini club's</p></li>
                   <% if  (id!=null) 
-                  	{   query = "select c.cname,c.id  from circle c, belongs_to b where b.cid=c.id and b.user_id='"+id+"' and c.iscircle='N'";
+                  	{   query = "select cname,id  from circle c, belongs_to b where b.cid=c.id and b.user_id='"+id+"' and c.iscircle='N'";
 						rs = dbhelper.runSql(query);
 						while(rs.next()){
 							out.println("<li><a class='dropdown-item' href='/phase4/board/lib/circle_page.jsp?cid="+rs.getString(2)+"' >"+rs.getString(1)+"</a></li>");
@@ -119,80 +121,48 @@
             <p id="main_title">Make club</p>
             <!-- <p id="sub_title">Join our school clubs. It makes your School life more lively. <br>Also you can make club.</p> -->
           </div>
-          <img class="banner_img" id="upload_bg"  src="main.jpg">
+          <img class="banner_img" id="upload_bg"  src="/phase4/mainpage/images/main.jpg">
         </div>
         <div class="contents">
 
-            <form name="input" action="createclub.jsp" method="get">
-
+            <form name="input" action="circle_modify_process.jsp?cid=<%=circle.getId() %>" method="post">
 
                 <div class="input-group mb-3">
                     <span class="input-group-text" >Circle Name </span>
-                    <input type="text" name="cname" class="form-control" placeholder="Make circle's name" >
+                    <input type="text" name="cname" class="form-control" value="<%=circle.getCname() %>" disabled/>
                 </div>
                 <div class="input-group mb-3">
                   <span class="input-group-text" >Description </span>
-                  <input type="text" name="descr" class="form-control" placeholder="Enter short sentence to introduce your club." >   
+                  <textarea class="form-control" id="exampleFormControlTextarea1"
+										rows="6" name="description"><%=circle.getDescription() %></textarea>
                 </div>
                 <div class="input-group mb-3">
                   <span class="input-group-text" >Manager </span>
-                  <input type="text" name="id" class="form-control" placeholder="Enter your ID." >   
+                  <input type="text" name="manager" class="form-control" value="<%=circle.getManager()%>">   
                   
                 </div>
                 <div class="input-group mb-3">
                   <span class="input-group-text" >Phone Number </span>
-                  <input type="text" name="phonenum" class="form-control" placeholder="Enter like this: 01011112222" >   
+                  <input type="text" name="phonenum" class="form-control" value="<%=circle.getPhoneNum()%>" >   
                 </div>
                 <div class="input-group mb-3">
                   <span class="input-group-text" >Group size </span>
-                  <input type="text" name="size" class="form-control" placeholder="Enter group size. ex)40" >   
+                  <input type="text" name="size" class="form-control" value="<%=circle.getMax_person() %>" >   
                 </div>
                 <div class="input-group mb-3">
                   <span class="input-group-text" >Thumbnail </span>
-                  <input type="text" name="thumb" class="form-control" placeholder="Enter image url please." >   
+                  <input type="text" name="thumb" class="form-control" value="<%=circle.getThumbnail() %>" >   
                 </div>
-                
-                <input type="radio" name="isClub" value="true">동아리 
-				<input type="radio" name="isClub" value="false">소모임 
-	
-              <%--     <div class="form-check">
-                    <input class="form-check-input"  type="radio" name="isClub" id="isClub">
-                    <label class="form-check-label" for="isClub">
-                      동아리
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input"  type="radio" name="isClub" id=" >
-                    <label class="form-check-label" for="isMini">
-                      소모임
-                    </label>
-                  </div>
-                   --%>
-             
-	          
-	                <select class="form-select form-select-lg mb-3" name="choose_cate" aria-label=".form-select-lg example">
-	                  <option value="default" selected>Choose category </option>
-	                  <% 
-                  	   query = "select * from categorys";
-						rs = dbhelper.runSql(query);
-						while(rs.next()){
-							out.println("<option value='"+rs.getInt(1)+"'>"+rs.getString(2)+"</option>"); 
-						}
-					   %>	
-	              
-                  </select>
-
-
                   <div class="input-date">
                   
                     <div class="input_style" id="start_apply">
                       모집시작일
-                      <input type="date" name="start-date" class="input-field"  value="2000-01-01" id="r-date">
+                      <input type="date" name="start-date" class="input-field"  value="<%=circle.getStartDate()%>" id="r-date">
 
                     </div class="input_style">
                     <div>
                            모집마감일
-                      <input type="date" name="end-date" class="input-field"  value="2000-01-01" id="r-date">
+                      <input type="date" name="end-date" class="input-field"  value="<%=circle.getEndDate()%>" id="r-date">
                   </div>
                   </div>
 

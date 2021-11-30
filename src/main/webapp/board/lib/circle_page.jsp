@@ -34,8 +34,8 @@ Released   : 20110329
 <style>
 #header h2 {
 	float: right;
-	width: 100vh;
-	height: 100vh;
+	width: 494px;
+	height: 34px;
 	padding: 180px 20px 0 0;
 	background: url(<%=circle.getThumbnail()%>) no-repeat;
 	backgrount-
@@ -81,26 +81,6 @@ Released   : 20110329
       	System.out.println(circle.getId());
       %>
       <div class="post">
-        <h2 class="title">A Few Examples of Common Tags</h2>
-        <div class="story">
-          <p><strong></strong>This is an example of a paragraph followed by a blockquote. In posuere eleifend odio. Quisque semper augue mattis wisi. Maecenas ligula. Pellentesque viverra vulputate enim. Aliquam erat volutpat lorem ipsum dolorem.</p>
-          <blockquote>
-            <p>Pellentesque tristique ante ut risus. Quisque dictum. Integer nisl risus, sagittis convallis, rutrum id, elementum congue, nibh. Suspendisse dictum porta lectus. Donec placerat odio</p>
-          </blockquote>
-          <h3>Heading Level Three</h3>
-          <p>An unordered list example:</p>
-          <ul>
-            <li>List item number one</li>
-            <li>List item number two</li>
-            <li>List item number three</li>
-          </ul>
-          <p>An ordered list example:</p>
-          <ol>
-            <li>List item number one</li>
-            <li>List item number two</li>
-            <li>List item number three</li>
-          </ol>
-        </div>
         <div class="meta">
           <p class="date">Posted on February 22, 2007 by Admin</p>
           <p class="file">Filed under <a href="#">Uncategorized</a> | <a href="#">Edit</a> | <a href="#">28 Comments</a></p>
@@ -122,10 +102,14 @@ Released   : 20110329
         <li>
           <h2>Tab</h2>
           <ul>
-             <% out.println(Tab.showTabList(db,circle.getId()));%>
+             <% 
+             out.println("<li><a href=\"schedule.jsp?cid=" + circle.getId() + "\">스케줄</a></li>");
+             out.println(Tab.showTabList(db,circle.getId()));
+             %>
           </ul>
-          <button type="button" class="btn btn-secondary">Add Tab</button>
         </li>
+        <button type="button" class="btn btn-secondary" onclick="location.href='circle_modify_page.jsp?&cid=<%=request.getParameter("cid")%>'" >Manager Page</button>
+        <button type="button" class="btn btn-secondary" onclick="location.href='add_tab_page.jsp?&cid=<%=request.getParameter("cid")%>'" >Add Tab</button>
       </ul>
     </div>
     <!-- end #links -->
