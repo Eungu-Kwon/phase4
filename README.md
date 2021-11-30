@@ -13,15 +13,22 @@
 <!--Wirte one paragraph of project description -->  
 This project's purpose is to create a make Repository with a collection of default settings  
 
-## Overview
+#### Overview
 <!-- Write Overview about this project -->
-**If you use this template, you can use this function**
-- Issue Template
-- Pull Request Template
-- Commit Template
-- Readme Template
-- Contribute Template
-- Pull Request Build Test(With Github Actions)
+## **개발 동기🤔** 
+* 현재 경북대학교 교내에 있는 동아리들을 한 곳에서 모아주는 사이트가 없어서 개발을 진행하게 되었다.
+  - 목적: 교내 동아리,소모임들을 검색하고 신청할 수 있는 서비스 +동아리,소모임들을 위한 개별 커뮤니티 제공 및          운영활성화에 도움
+# *대상*
+`교내에 있는 동아리,소모임이 궁금한 대학생` </br>
+`동아리,소모임에 신청하고 싶은 누구나 혹은 만들고 싶은 누구나`
+`매번 신청기간에 홍보를 하고 신청 플랫폼을 따로 만들어야해서 번거로운 동아리 부원들`
+`동아리,소모임 별 개별 커뮤니티를 가지고 싶은 운영진들 `
+    한마디로 동아리,소모임 전문 커뮤니티 및 신청 사이트
+  한마디로 동아리,소모임 전문 커뮤니티 및 신청 사이트
+  
+
+
+
 
 ## Settings
 <!-- Write  settings about this project -->
@@ -63,7 +70,7 @@ This project's purpose is to create a make Repository with a collection of defau
 <img src="https://user-images.githubusercontent.com/68631158/144125382-f0fb0165-9eb6-46b7-8448-2a47960db06f.png" width="200px" height="30%" title="px(픽셀) 크기 설정" alt="RubberDuck"></img> </br>
   - [chanwooDEV](https://github.com/chanwooDev) - **Chanwoo Bae** - <pove2019@gmail.com>
   - [Eungu-Kwon](https://github.com/Eungu-Kwon) - **Eungu Kwon** - <dmsrn135@knu.ac.kr>
-  - [meeeeju](https://github.com/meeeeju) - **meeju Kim** - <meeju06@gmail.com>
+  - [meeeeju](https://github.com/meeeeju) - **Meeju Kim** - <meeju06@gmail.com>
 
 
 ## 참고한 오픈 소스들 
