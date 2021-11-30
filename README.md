@@ -1,8 +1,8 @@
-# Repository Quick Start template
+# Final DB TeamProject Name : All Club's in KNU
 ## Index
-  - [Overview](#overview) 
-  - [Getting Started](#getting-started)
-  - [Contributing](#contributing)
+  - [Overview](#overview) <!--전체적인 기능 설명 (우리 프로젝트 소개)-->
+  - [Settings](#settings) <!--제작환경-->
+  - [Getting Started](#getting-started) <!--다운받거나 clone시 사용하는 방법 및 유의 사항 -->
   - [Authors](#authors)
   - [License](#license)
 <!--  Other options to write Readme
@@ -15,6 +15,16 @@ This project's purpose is to create a make Repository with a collection of defau
 
 ## Overview
 <!-- Write Overview about this project -->
+**If you use this template, you can use this function**
+- Issue Template
+- Pull Request Template
+- Commit Template
+- Readme Template
+- Contribute Template
+- Pull Request Build Test(With Github Actions)
+
+## Settings
+<!-- Write  settings about this project -->
 **If you use this template, you can use this function**
 - Issue Template
 - Pull Request Template
@@ -48,11 +58,7 @@ And repeat
 ## Deployment
  Add additional notes about how to deploy this on a live system
  -->
-## Contributing
-<!-- Write the way to contribute -->
-I am looking for someone to help with this project. Please advise and point out.  
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code
-of conduct, and the process for submitting pull requests to us.
+
 
 ## Authors
   - [Always0ne](https://github.com/Always0ne) - **SangIl Hwang** - <si8363@soongsil.ac.kr>
