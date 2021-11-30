@@ -104,6 +104,7 @@ Released   : 20110329
              <% out.println(Tab.showTabList(db,circle.getId()));%>
           </ul>
         </li>
+        <button type="button" class="btn btn-secondary" onclick="location.href='circle_modify_page.jsp?&cid=<%=request.getParameter("cid")%>'" >관리</button>
       </ul>
     </div>
     <!-- end #links -->

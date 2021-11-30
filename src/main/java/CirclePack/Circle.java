@@ -18,9 +18,43 @@ public class Circle {
 	public int categoryId;
 	public String categoryName;
 	public Date startDate;
+	public Circle(String id) {
+		String query = "SELECT *\r\n"
+				+ "FROM CIRCLE\r\n"
+				+ "WHERE id = "+ id;
+		ResultSet rs = db.runSql(query);
+		try {
+			while(rs.next()){
+				this.id = rs.getInt(1);
+				Cname = rs.getString(2);
+				manager = rs.getString(3);
+				phoneNum = rs.getString(4);
+				description = rs.getString(5);
+				max_person = rs.getInt(6);
+				isCircle = rs.getString(7);
+				categoryId = rs.getInt(8);
+				startDate = rs.getDate(9);
+				endDate = rs.getDate(10);
+				thumbnail = rs.getString(11);
+			}
+			rs.close();
+			query = "SELECT Cvalue FROM categorys WHERE id = " + categoryId;
+			rs = db.runSql(query);
+			while(rs.next()){
+				categoryName = rs.getString(1);
+			}
+			rs.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
 	public int getId() {
 		return id;
 	}
+	
 
 	public void setId(int id) {
 		this.id = id;
@@ -117,38 +151,7 @@ public class Circle {
 	public Date endDate;
 	public String thumbnail;
 	
-	public Circle(String id) {
-		String query = "SELECT *\r\n"
-				+ "FROM CIRCLE\r\n"
-				+ "WHERE id = "+ id;
-		ResultSet rs = db.runSql(query);
-		try {
-			while(rs.next()){
-				this.id = rs.getInt(1);
-				Cname = rs.getString(2);
-				manager = rs.getString(3);
-				phoneNum = rs.getString(4);
-				description = rs.getString(5);
-				max_person = rs.getInt(6);
-				isCircle = rs.getString(7);
-				categoryId = rs.getInt(8);
-				startDate = rs.getDate(9);
-				endDate = rs.getDate(10);
-				thumbnail = rs.getString(11);
-			}
-			rs.close();
-			query = "SELECT Cvalue FROM categorys WHERE id = " + categoryId;
-			rs = db.runSql(query);
-			while(rs.next()){
-				categoryName = rs.getString(1);
-			}
-			rs.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
+	
 	public static  int getNewId() {
 		int id = 0;
 		ResultSet rs = null;
@@ -165,6 +168,13 @@ public class Circle {
 		return id + 1;
 	}
 	
+	public int updateCircle() {
+		String sql ="UPDATE CIRCLE SET description='"+this.description+"', manager = '"+ this.manager+"', phone_num = '"+ this.phoneNum
+				+"', max_person = "+ this.max_person+", start_date = TO_DATE('"+ this.startDate.toString()+"', 'yyyy/mm/dd'), end_date = TO_DATE('"+ this.endDate.toString()+"', 'yyyy/mm/dd') where id="+this.id;
+		System.out.println(sql);
+		return db.updateSql(sql);//TO_DATE('1992/12/02', 'yyyy/mm/dd HH24:MI')
+		
+	}
 	
 
 	
