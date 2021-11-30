@@ -5,8 +5,11 @@
 <% request.setCharacterEncoding("utf-8"); %>
 
 <%
+<<<<<<< Updated upstream
 	
 	//board.setUserId((String)tempSession.getAttribute("id"));
+=======
+>>>>>>> Stashed changes
 	CommentController cc = new CommentController();
 	Comment comment = new Comment(request.getParameter("cid"),request.getParameter("tid"),request.getParameter("id"));
 	comment.setContent(request.getParameter("content"));
@@ -22,6 +25,4 @@
 	out.println("<script>alert('"+msg+"');</script>");
 	String s= "location.href='board_page.jsp?cid="+comment.getCid()+"&tid="+comment.getTid()+"&id="+comment.getBid()+"';";
 	out.println("<script>"+ s+"</script>");
-
-		
 %>
