@@ -123,7 +123,7 @@
         </div>
         <div class="contents">
 
-            <form name="input" action="response.jsp" method="get">
+            <form name="input" action="createclub.jsp" method="get">
 
 
                 <div class="input-group mb-3">
@@ -154,13 +154,13 @@
 
 
                   <div class="form-check">
-                    <input class="form-check-input" name="mini" type="radio" name="isClub" id="isClub" checked>
+                    <input class="form-check-input"  type="radio" name="isClub" id="isClub" checked>
                     <label class="form-check-label" for="isClub">
                       동아리
                     </label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" name="circle" type="radio" name="isMini" id="isMini" >
+                    <input class="form-check-input"  type="radio" name="isMini" id="isMini" >
                     <label class="form-check-label" for="isMini">
                       소모임
                     </label>

@@ -157,7 +157,8 @@
 	           
             </form>
             
-            <button type="button" class="btn btn-light" id="create" href="detailclub.jsp">➕ Make CLUB</button>   
+            <!-- <button type="button" class="btn btn-light" id="create" href="detailclub.jsp">➕ Make CLUB</button> -->
+            <button class='btn btn-light' onclick="window.location.href='/phase4/mainpage/lib/makeclub.jsp';">➕ Make CLUB</button>   
             <p>현재 카테고리 :<%=categoryName %> </p>
                   
           </div>
