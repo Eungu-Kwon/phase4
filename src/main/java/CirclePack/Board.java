@@ -34,6 +34,8 @@ public class Board {
 				this.title = rs.getString(3);
 				this.content = rs.getString(4);
 				this.userId = rs.getString(5);
+				this.cid = Integer.parseInt(cid);
+				this.tid = Integer.parseInt(tid);
 			}
 			rs.close();
 		} catch (SQLException e) {
@@ -41,21 +43,21 @@ public class Board {
 			e.printStackTrace();
 		}
 	}
+	public Board(String cid, String tid) {
+		LocalDateTime now = LocalDateTime.now();
+		this.cid = Integer.parseInt(cid);
+		this.tid = Integer.parseInt(tid);
+		id = getNewId();
+		dateString = now.format(DateTimeFormatter.ofPattern("yyyy/MM/dd hh:mm"));
+		//title, content, userId 는 set으로 받아옴
+	}
 	public String getDateString() {
 		return dateString;
 	}
 	public void setDateString(String dateString) {
 		this.dateString = dateString;
 	}
-	public Board(String cid, String tid) {
-		LocalDateTime now = LocalDateTime.now();
-		this.cid = Integer.parseInt(cid);
-		this.tid = Integer.parseInt(tid);
-		id = getNewBoardId();
-		dateString = now.format(DateTimeFormatter.ofPattern("yyyy/MM/dd hh:mm"));
-		System.out.println(dateString);
-		//title, content, userId 는 set으로 받아옴
-	}
+
 	
 	public int getCid() {
 		return cid;
@@ -100,12 +102,12 @@ public class Board {
 		return id;
 	}
 		
-	public int getNewBoardId() {
+	public int getNewId() {
 		int id = 0;
 		ResultSet rs = null;
 
 		try {
-			String sql = "select max(id) from board";
+			String sql = "select max(id) from board where cid="+cid+" and tid="+tid;
 			rs = db.runSql(sql);
 			rs.next();
 			id = rs.getInt(1);

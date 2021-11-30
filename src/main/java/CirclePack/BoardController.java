@@ -16,8 +16,9 @@ public class BoardController {
 		
 		return db.updateSql(sql);
 	}
-	public int updateProcess(int cid, int tid, int bid, Board board) {
-		String sql ="UPDATE BOARD SET content='"+board.getContent()+"', title = '"+ board.getTitle() +"' where user_id='"+board.getUserId()+"' and tid="+tid+" AND cid="+tid+" AND id="+bid;
+	public int updateProcess(Board board) {
+		String sql ="UPDATE BOARD SET content='"+board.getContent()+"', title = '"+ board.getTitle() +"' where user_id='"+board.getUserId()
+		+"' and cid="+board.getCid()+" AND tid="+board.getTid()+" AND id="+board.getId();
 		return db.updateSql(sql);
 	}
 	

@@ -18,17 +18,20 @@
 	if(i == -1) msg = "게시글 생성이 실패했습니다 ";
 %>
 
+<script>
+	alert('<%=msg%>');
+</script>
 <%
-	out.println("<script>alert('"+msg+"');</script>");
+	String cid = request.getParameter("cid");
+	String tid = request.getParameter("tid");
+	String id = request.getParameter("id");
 	if(i != -1){
-		//String s = "board_page.jsp?cid="+board.getCid()+"&tid="+board.getTid()+"&id="+board.getId();
-		String s= "location.href='board_page.jsp?cid="+board.getCid()+"&tid="+board.getTid()+"&id="+board.getId()+"';";
-		out.println("<script>"+ s+"</script>");
-		//response.sendRedirect(s);
+		String s = "board_page.jsp?cid="+cid+"&tid="+tid+"&id="+id;
+		response.sendRedirect(s);
 	}
 	else{
-		String s= "location.href='circle_page.jsp?cid="+board.getCid()+"&tid="+board.getTid()+"';";
-		out.println("<script>"+ s+"</script>");
+		String s = "circle_page.jsp?cid="+cid+"&tid="+tid;
+		response.sendRedirect(s);
 	}
 		
 %>
