@@ -61,7 +61,7 @@ This project's purpose is to create a make Repository with a collection of defau
 
 ## Authors
 **Kyungpook-National University Student** 🧑‍💻👨‍💻👩‍💻
-<img src="https://user-images.githubusercontent.com/68631158/144125382-f0fb0165-9eb6-46b7-8448-2a47960db06f.png" width="40%" height="30%" title="px(픽셀) 크기 설정" alt="RubberDuck"></img> </br>
+<img src="https://user-images.githubusercontent.com/68631158/144125382-f0fb0165-9eb6-46b7-8448-2a47960db06f.png" width="200px" height="30%" title="px(픽셀) 크기 설정" alt="RubberDuck"></img> </br>
   - [chanwooDEV](https://github.com/chanwooDev) - **Chanwoo Bae** - <pove2019@gmail.com>
   - [Eungu-Kwon](https://github.com/Eungu-Kwon) - **Eungu Kwon** - <dmsrn135@knu.ac.kr>
   - [meeeeju](https://github.com/meeeeju) - **meeju Kim** - <meeju06@gmail.com>
