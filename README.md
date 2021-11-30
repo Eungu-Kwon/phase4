@@ -61,7 +61,7 @@ And repeat
 
 
 ## Authors
-* **Kyungpook-National University Student** 🧑‍💻👨‍💻👩‍💻
+**Kyungpook-National University Student** 🧑‍💻👨‍💻👩‍💻
   - [chanwooDEV](https://github.com/chanwooDev) - **Chanwoo Bae** - <pove2019@gmail.com>
   - [Eungu-Kwon](https://github.com/Eungu-Kwon) - **Eungu Kwon** - <dmsrn135@knu.ac.kr>
   - [meeeeju](https://github.com/meeeeju) - **meeju Kim** - <meeju06@gmail.com>
@@ -71,11 +71,13 @@ And repeat
  - [referenced Project](project link) - **LICENSE** - little-bit introduce
 -->
 
-## License
+## 참고한 오픈 소스들 
 * readme.txt 템플릿 제공
    - [Always0ne](https://github.com/Always0ne) - **SangIl Hwang** - <si8363@soongsil.ac.kr>
   See also the list of [contributors](https://github.com/always0ne/readmeTemplate/contributors)
   who participated in this project. 
+* bootstrap : <https://getbootstrap.com/>
+* freecss templates: <https://www.free-css.com/>
 
 ```
 
