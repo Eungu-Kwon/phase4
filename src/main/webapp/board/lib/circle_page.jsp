@@ -34,8 +34,8 @@ Released   : 20110329
 <style>
 #header h2 {
 	float: right;
-	width: 100vh;
-	height: 100vh;
+	width: 494px;
+	height: 34px;
 	padding: 180px 20px 0 0;
 	background: url(<%=circle.getThumbnail()%>) no-repeat;
 	backgrount-
@@ -124,7 +124,6 @@ Released   : 20110329
           <ul>
              <% out.println(Tab.showTabList(db,circle.getId()));%>
           </ul>
-          <button type="button" class="btn btn-secondary">Add Tab</button>
         </li>
       </ul>
     </div>
