@@ -25,14 +25,13 @@ This project's purpose is to create a make Repository with a collection of defau
 
 ## Settings
 <!-- Write  settings about this project -->
-**If you use this template, you can use this function**
-- Eclipse IDE for Enterprise Java and Web Developers <br></br>
+- **Eclipse IDE for Enterprise Java and Web Developers** <br></br>
 <img src="https://user-images.githubusercontent.com/68631158/144124881-4b914f44-c886-44f0-9a0c-5479d483c348.png" width="40%" height="30%" title="px(픽셀) 크기 설정" alt="RubberDuck"></img>
 <br><br>
-- JDBC <br></br>
+- **JDBC** <br></br>
 ![jdbc](https://user-images.githubusercontent.com/68631158/144124545-c516c356-2b9c-4ea1-a11d-7a2a2566b808.png)
 <br><br>
-- SQL Developer <br></br>
+- **SQL Developer** <br></br>
 <img width="290" alt="Screen Shot 2021-12-01 at 5 21 08 AM" src="https://user-images.githubusercontent.com/68631158/144124985-173adcd4-bf42-42d3-a444-86ffcf6b64ac.png">
 <br><br>
 
