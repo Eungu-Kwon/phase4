@@ -4,8 +4,6 @@
 <%@ page import= "CirclePack.*" %>
  <%	
 	
-	
-	
 	request.setCharacterEncoding("UTF-8");
  	HttpSession tempSession = request.getSession();
 	String userId = (String)tempSession.getAttribute("id");
@@ -52,12 +50,8 @@
                   <!-- <input type="image" src="/examples/images/submit_icon.png" alt="제출버튼"> -->
                     <div id="btn_sr">
                       <input type="submit" class="btn btn-primary" value="submit"></input>
-               
                   </div>
 	</form>
-
-
-
         </div>
   
     </div>
