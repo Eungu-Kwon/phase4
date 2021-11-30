@@ -1,7 +1,7 @@
 
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="CirclePack.*"%>
-<%@ page import="java.sql.*"%>
+<%@ page import="java.sql.*, java.text.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <!--
 Design by Free CSS Templates
@@ -38,10 +38,23 @@ input[type="date"] {
     margin-left: 10px;
     margin-right: 10px;
 }
+.CommentWriter {
+    display: inline-block;
+}
 </style>
 
 </head>
 <body>
+<%
+ResultSet rs = null;
+if(request.getParameter("id") != null){
+	String sql = "SELECT * FROM SCHEDULES WHERE ID="+request.getParameter("id");
+	DBHelper db = DBHelper.getInstance();
+	rs = db.runSql(sql);
+	rs.next();
+}
+
+%>
 	<div id="wrapper">
 		<div id="menu">
 			<ul>
@@ -70,13 +83,22 @@ input[type="date"] {
 					<div class="article_header"></div>
 					<div class="article_container">
 						<form action="schedule_create_process.jsp?cid=<%=request.getParameter("cid")%>" method="post" accept-charset="utf-8">
+						<% if(rs != null) out.print("<input name=\"sid\" value=\"" + request.getParameter("id") + "\" hidden></input>"); %>
 							<div class="article_board">
 								<div class="mb-3">
 									<label for="exampleFormControlInput1" class="form-label">Title</label>
-									<input type="title" class="form-control"
-										id="exampleFormControlInput1" name="title">
+									<% if(rs != null) out.print("<input type=\"title\" class=\"form-control\"id=\"exampleFormControlInput1\" name=\"title\" value='" + rs.getString(8) + "' required>");
+										else out.print("<input type=\"title\" class=\"form-control\"id=\"exampleFormControlInput1\" name=\"title\" required>");%>
 								</div>
-								<div><label>기간 :</label><input name="start_date" type="date"></input> ~ <input name="end_date" type="date"></input>
+								<div><% 
+								if(rs != null){
+									String start_str = new SimpleDateFormat("yyyy-MM-dd").format(rs.getDate(6));
+									String end_str = new SimpleDateFormat("yyyy-MM-dd").format(rs.getDate(7));
+									out.print("<label>기간 :</label><input name=\"start_date\" type=\"date\" value='" + start_str + "' required></input> ~ <input name=\"end_date\" type=\"date\" value='" + end_str + "' required></input>");
+								}
+								else
+									out.print("<label>기간 :</label><input name=\"start_date\" type=\"date\" required></input> ~ <input name=\"end_date\" type=\"date\" required></input>");
+								%>
 								<label>표시 색</label>
 								<select name="sel_color">
 									<option value='red'>red</option>
@@ -89,8 +111,9 @@ input[type="date"] {
 								</div>
 								<div class="mb-3">
 									<label for="exampleFormControlTextarea1" class="form-label">Content</label>
-									<textarea class="form-control" id="exampleFormControlTextarea1"
-										rows="6" name="content"></textarea>
+									<% if(rs != null) out.print("<textarea class=\"form-control\" id=\"exampleFormControlTextarea1\" rows=\"6\" name=\"content\" required>" + rs.getString(5) + "</textarea>");
+										else out.print("<textarea class=\"form-control\" id=\"exampleFormControlTextarea1\" rows=\"6\" name=\"content\"' required></textarea>");
+									%>
 								</div>
 							</div>
 							<div class="CommentBox">
@@ -100,8 +123,15 @@ input[type="date"] {
 									</li>
 								</ul>
 								<div class="CommentWriter">
-									<button type="submit" class="btn btn-primary"
-										id="comment_submit">submit</button>
+								<%
+								if(rs == null){
+									out.print("<button type=\"submit\" class=\"btn btn-primary\" id=\"comment_submit\">submit</button>");
+								}
+								else{
+									out.print("<button type=\"submit\" formaction=\"/phase4/board/lib/schedule_update_process.jsp?cid=" + request.getParameter("cid") + "\" class=\"btn btn-primary\" id=\"comment_submit\">Modify</button>");
+									out.print("<button type=\"submit\" formaction=\"/phase4/board/lib/schedule_delete_process.jsp?cid=" + request.getParameter("cid") + "\" class=\"btn btn-primary\" id=\"comment_submit\">Delete</button>");
+								}
+								%>
 								</div>
 							</div>
 
