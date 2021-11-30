@@ -80,6 +80,7 @@ Released   : 20110329
       	System.out.println(tid);
       	System.out.println(circle.getId());
       %>
+      <div class="post">
         <div class="meta">
           <p class="date">Posted on February 22, 2007 by Admin</p>
           <p class="file">Filed under <a href="#">Uncategorized</a> | <a href="#">Edit</a> | <a href="#">28 Comments</a></p>
@@ -101,7 +102,10 @@ Released   : 20110329
         <li>
           <h2>Tab</h2>
           <ul>
-             <% out.println(Tab.showTabList(db,circle.getId()));%>
+             <% 
+             out.println("<li><a href=\"schedule.jsp?cid=" + circle.getId() + "\">스케줄</a></li>");
+             out.println(Tab.showTabList(db,circle.getId()));
+             %>
           </ul>
         </li>
         <button type="button" class="btn btn-secondary" onclick="location.href='circle_modify_page.jsp?&cid=<%=request.getParameter("cid")%>'" >Manager Page</button>
