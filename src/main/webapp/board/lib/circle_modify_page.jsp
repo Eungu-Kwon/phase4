@@ -153,22 +153,6 @@
                   <span class="input-group-text" >Thumbnail </span>
                   <input type="text" name="thumb" class="form-control" value="<%=circle.getThumbnail() %>" >   
                 </div>
-                  
-             
-	          
-	                <select class="form-select form-select-lg mb-3" name="choose_cate" aria-label=".form-select-lg example">
-	                  <option value="default" selected>Choose category </option>
-	                  <% 
-                  	   query = "select * from categorys";
-						rs = dbhelper.runSql(query);
-						while(rs.next()){
-							out.println("<option value='"+rs.getInt(1)+"'>"+rs.getString(2)+"</option>"); 
-						}
-					   %>	
-	              
-                  </select>
-
-
                   <div class="input-date">
                   
                     <div class="input_style" id="start_apply">
