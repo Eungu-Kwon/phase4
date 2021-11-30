@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 public class Circle {
 	 
-	public DBHelper db = DBHelper.getInstance();
+	public static DBHelper db = DBHelper.getInstance();
 	public int id;
 	public String Cname;
 	public String manager;
@@ -149,7 +149,7 @@ public class Circle {
 		}
 		
 	}
-	public int getNewId() {
+	public static  int getNewId() {
 		int id = 0;
 		ResultSet rs = null;
 
