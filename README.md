@@ -40,24 +40,16 @@ This project's purpose is to create a make Repository with a collection of defau
  Write about need to install the software and how to install them 
 -->
 ### Installing
-<!-- A step by step series of examples that tell you how to get a development 
-env running
 
-Say what the step will be
-
-    Give the example
-
-And repeat
-
-    until finished
--->
 1. Click `Use this template` button 
 2. Create New Repository
 3. Update Readme and Others(Other features are noted in comments.)
-<!--
-## Deployment
- Add additional notes about how to deploy this on a live system
- -->
+
+  주의사항
+  자바 패키지가 import 되지 않는 경우: 해당하는 import 코드를 지웠다가 다시 적으면 해결가능
+  자바 패키지 : TimePack ,CirclePack
+ 
+  
 
 
 ## Authors
@@ -66,10 +58,6 @@ And repeat
   - [Eungu-Kwon](https://github.com/Eungu-Kwon) - **Eungu Kwon** - <dmsrn135@knu.ac.kr>
   - [meeeeju](https://github.com/meeeeju) - **meeju Kim** - <meeju06@gmail.com>
 
-<!--
-## Used or Referenced Projects
- - [referenced Project](project link) - **LICENSE** - little-bit introduce
--->
 
 ## 참고한 오픈 소스들 
 * readme.txt 템플릿 제공
