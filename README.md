@@ -29,7 +29,7 @@ This project's purpose is to create a make Repository with a collection of defau
 - Eclipse IDE for Enterprise Java and Web Developers 
 ![alt tag](https://raw.github.com/Eungu-Kwon/phase4/tree/master/image_readme/eclipse.png)
 <br><br>
-- JDBC 
+- JDBC <br></br>
 ![jdbc](https://user-images.githubusercontent.com/68631158/144124545-c516c356-2b9c-4ea1-a11d-7a2a2566b808.png)
 <br><br>
 - SQL Developer
