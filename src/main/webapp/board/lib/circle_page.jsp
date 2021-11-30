@@ -14,7 +14,7 @@ Released   : 20110329
 -->
 <
 <%	DBHelper db = DBHelper.getInstance();
-	Circle circle = new Circle(db,request.getParameter("cid"));
+	Circle circle = new Circle(request.getParameter("cid"));
 	int tid = 1;
 	if (request.getParameter("tid") != null){
 		tid = Integer.parseInt(request.getParameter("tid"));
@@ -34,8 +34,8 @@ Released   : 20110329
 <style>
 #header h2 {
 	float: right;
-	width: 100vh;
-	height: 100vh;
+	width: 494px;
+	height: 34px;
 	padding: 180px 20px 0 0;
 	background: url(<%=circle.getThumbnail()%>) no-repeat;
 	backgrount-

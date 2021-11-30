@@ -6,12 +6,11 @@
 
 <%
 	
-	//board.setUserId((String)tempSession.getAttribute("id"));
 	CommentController cc = new CommentController();
 	Comment comment = new Comment(request.getParameter("cid"),request.getParameter("tid"),request.getParameter("id"));
 	comment.setContent(request.getParameter("content"));
 	HttpSession tempSession = request.getSession();
-	comment.setUserId("fviocs501");
+	comment.setUserId((String)tempSession.getAttribute("id"));
 	System.out.println(comment.getCid());
 	System.out.println(comment.getTid());
 	System.out.println(comment.getBid());

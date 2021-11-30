@@ -4,8 +4,8 @@ public class CommentController {
 	DBHelper db = DBHelper.getInstance();
 	
 	
-	public int deleteProcess(int cid, int tid, int bid) {
-		String sql = "DELETE FROM BOARD WHERE cid = " + cid +" and tid = "+ tid + " and id = " + bid;
+	public int deleteProcess(int cid, int tid, int bid,int id) {
+		String sql = "DELETE FROM COMMENTS WHERE cid = " + cid +" and tid = "+ tid+" and bid = "+bid + " and id = " + id;
 		return db.updateSql(sql);
 	}//아직안고침
 	public int createProcess(Comment comment) {

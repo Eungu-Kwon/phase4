@@ -10,7 +10,7 @@
 	board.setTitle(request.getParameter("title"));
 	board.setContent(request.getParameter("content"));
 	HttpSession tempSession = request.getSession();
-	board.setUserId("fviocs501");
+	board.setUserId((String)tempSession.getAttribute("id"));
 	//board.setUserId((String)tempSession.getAttribute("id"));
 	
 	int i = bc.createProcess(board);
