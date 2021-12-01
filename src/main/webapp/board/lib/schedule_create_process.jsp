@@ -19,6 +19,7 @@
 		out.println("<script>alert('로그아웃되었습니다.');</script>");
 		String s= "location.href='/phase4/mainpage/lib/mainpage.jsp';";
 		out.println("<script>"+ s+"</script>");
+		if(1==1) return;
 	}
 	else{
 		sql = "INSERT INTO SCHEDULES VALUES(" + new_id + ", '" + tempSession.getAttribute("id") + "', " + request.getParameter("cid") + ", '"
