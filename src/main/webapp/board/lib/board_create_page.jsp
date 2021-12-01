@@ -15,6 +15,8 @@ Released   : 20110329
 -->
 <% 
 	Board board = new Board(request.getParameter("cid"), request.getParameter("tid"));
+	DBHelper db = DBHelper.getInstance();
+	Circle circle = new Circle(request.getParameter("cid"));
 %>
 
 
@@ -91,15 +93,28 @@ Released   : 20110329
 
 			<!-- end #posts -->
 			<div id="links">
-				<ul>
-					<li>
-						<h2>Archives</h2>
-						<ul>
-							<li><a href="#">Donec Dictum Metus</a></li>
-						</ul>
-					</li>
-				</ul>
-			</div>
+      <ul>
+      	<li>
+          <h2><%=circle.getCname()%></h2>
+          <ul>
+            <li><a>total number : <%=circle.getCurPerson()%> </a></li>
+            <li><a>Category : <%=circle.getCategoryName()%></a></li>
+            <li><a>Manager : <%=circle.getManager()%></a></li>
+            <li><a>phone-number : <%=circle.getPhoneNum()%></a></li>
+          </ul>
+        <li>
+          <h2>Tab</h2>
+          <ul>
+             <%
+             out.println("<li><a href=\"schedule.jsp?cid=" + circle.getId() + "\">스케줄</a></li>");
+             out.println(Tab.showTabList(db,circle.getId()));
+             %>
+             
+          </ul>
+        </li>
+
+      </ul>
+    </div>
 			<!-- end #links -->
 			<div style="clear: both;">&nbsp;</div>
 		</div>

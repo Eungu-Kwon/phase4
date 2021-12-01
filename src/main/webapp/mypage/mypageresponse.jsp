@@ -29,7 +29,9 @@ if(result == -1){
 	out.println("<script>alert('입력창을 다시 확인해주세요!'); history.back();</script>");
 }
 else {
-	out.println("<script>alert('회원정보가 업데이트 되었습니다!'); history.back();</script>");
-	//response.sendRedirect("main.jsp");
+	out.println("<script>alert('회원정보가 업데이트 되었습니다!');</script>");
+	String s= "location.href='/phase4/mainpage/lib/mainpage.jsp';";
+	out.println("<script>"+ s+"</script>");
 }
+
 %>

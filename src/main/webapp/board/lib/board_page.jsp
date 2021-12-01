@@ -66,13 +66,8 @@ Released   : 20110329
             <div class="left_area">
             </div>
             <div class="right_area">
-              <form action="board_update_page.jsp?cid=<%=request.getParameter("cid")%>&tid=<%=request.getParameter("tid")%>&id=<%=request.getParameter("id")%>" method="post" accept-charset="utf-8">
-              	<button type="submit" class="btn btn-secondary">modify</button>
-              </form>
-              <form action="board_delete_process.jsp?cid=<%=request.getParameter("cid")%>&tid=<%=request.getParameter("tid")%>&id=<%=request.getParameter("id")%>" method="post" accept-charset="utf-8">
-              	<button type="submit" class="btn btn-secondary">delete</button>
-              </form>
-              
+            <button type="submit" onclick='location.href="board_update_page.jsp?cid=<%=request.getParameter("cid")%>&tid=<%=request.getParameter("tid")%>&id=<%=request.getParameter("id")%>"' class="btn btn-secondary">modify</button>
+            <button type="submit" onclick='location.href="board_delete_process.jsp?cid=<%=request.getParameter("cid")%>&tid=<%=request.getParameter("tid")%>&id=<%=request.getParameter("id")%>"' class="btn btn-secondary">delete</button>
             </div>
         </div>
  		<div class="ArticleContentBox">
@@ -113,7 +108,7 @@ Released   : 20110329
       	<li>
           <h2><%=circle.getCname()%></h2>
           <ul>
-            <li><a>total number : 20 </a></li>
+            <li><a>total number : <%=circle.getCurPerson()%> </a></li>
             <li><a>Category : <%=circle.getCategoryName()%></a></li>
             <li><a>Manager : <%=circle.getManager()%></a></li>
             <li><a>phone-number : <%=circle.getPhoneNum()%></a></li>

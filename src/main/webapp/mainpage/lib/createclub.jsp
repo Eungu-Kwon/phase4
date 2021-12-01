@@ -48,8 +48,7 @@ else{
 
 
 
-String sql = "insert into circle values("+String.valueOf(current_cid)+",'"+cname+"','"+master+"','"+phonenum+"','"+description+"',"+size+",'"+isClub+"',"+choose_cate+","+"TO_DATE( '"+start_date+"' , 'yyyy-mm-dd')"+","+"TO_DATE( '"+end_date+"' , 'yyyy-mm-dd'),'"+thumb+"')";
-
+String sql = "insert into circle values("+String.valueOf(current_cid)+",'"+cname+"','"+master+"','"+phonenum+"','"+description+"',"+size+",'"+isClub+"',"+choose_cate+","+"TO_DATE( '"+start_date+"' , 'yyyy-mm-dd')"+","+"TO_DATE( '"+end_date+"' , 'yyyy-mm-dd'),'"+thumb+"',1)";
 int result = db.updateSql(sql);
 
 if(result == -1){
@@ -62,6 +61,7 @@ else{
 	 */
 	sql="insert into belongs_to values("+String.valueOf(current_cid)+",'"+master+"')";
 	result=db.updateSql(sql);
+	
 	if (result==-1)
 	{
 		out.println("<script>alert('입력창을 다시 확인해주세요!');  history.back();</script>");	

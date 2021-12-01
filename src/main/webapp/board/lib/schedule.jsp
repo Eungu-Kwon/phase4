@@ -75,7 +75,7 @@ div#schedule {
       	<li>
           <h2><%=circle.getCname()%></h2>
           <ul>
-            <li><a>total number : 20 </a></li>
+            <li><a>total number : <%=circle.getCurPerson()%> </a></li>
             <li><a>Category : <%=circle.getCategoryName()%></a></li>
             <li><a>Manager : <%=circle.getManager()%></a></li>
             <li><a>phone-number : <%=circle.getPhoneNum()%></a></li>
