@@ -58,7 +58,7 @@ if(request.getParameter("id") != null){
 	<div id="wrapper">
 		<div id="menu">
 			<ul>
-				<li><a href="#" accesskey="1">Home</a></li>
+				<li><a href="/phase4/mainpage/lib/mainpage.jsp" accesskey="1">Home</a></li>
 				<li class="active"><a href="#" accesskey="2">Photos</a></li>
 				<li><a href="#" accesskey="3">Links</a></li>
 				<li><a href="#" accesskey="4">About</a></li>

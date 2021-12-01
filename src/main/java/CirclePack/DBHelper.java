@@ -47,6 +47,32 @@ public class DBHelper {
 	      }
 	   }
 	   
+	   public int updateSqlWithoutCommit(String sql) {
+		      try {
+		         int res = stmt.executeUpdate(sql);
+		         return res;
+		      } catch (SQLException e) {
+		         System.out.println("error: " + e.getMessage());
+		         return -1;
+		      }
+		   }
+	   
+	   public void doCommit() {
+		   try {
+		         conn.commit();
+		      } catch (SQLException e) {
+		         System.out.println("error: " + e.getMessage());
+		      }
+	   }
+	   
+	   public void doRollback() {
+		   try {
+		         conn.commit();
+		      } catch (SQLException e) {
+		         System.out.println("error: " + e.getMessage());
+		      }
+	   }
+	   
 	   public ResultSet runSql(String sql) {
 	      try {
 	         return stmt.executeQuery(sql);

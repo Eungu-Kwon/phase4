@@ -130,7 +130,7 @@
             
             
             <%
-            	query="select cname,thumbnail,max_person,start_date,end_date,phone_num,category_id,description,iscircle from circle where id="+cid;
+            	query="select cname,thumbnail,max_person,start_date,end_date,phone_num,category_id,description,iscircle,cur_person from circle where id="+cid;
             	rs = dbhelper.runSql(query);
 	        	int count=0;
 				while(rs.next()){
@@ -139,7 +139,7 @@
 		            	out.println("<div class='card-body'>");
 						out.println("<h2 class='card-title'>"+rs.getString(1)+"</h2>");
 						out.println("<p class='card-text'>"+rs.getString(8)+"</p>");
-						out.println("<p class='card-text'>"+"회원 수:  "+rs.getString(3)+" 명</p>");
+						out.println("<p class='card-text'>"+"회원 수:  "+ rs.getString(10) + " / " + rs.getString(3)+" 명</p>");
 						out.println("<p class='card-text'>"+"모집 기간:  "+rs.getString(4)+" ~ "+rs.getString(5)+"</p>");
 						out.println("<p class='card-text'>"+"Contact:  "+rs.getString(6)+"</p>");
 						out.println("<p class='card-text'>"+"카테고리:  "+rs.getString(7)+"</p>");
