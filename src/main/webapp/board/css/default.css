@@ -97,7 +97,6 @@
 
 
 #content{
-    height: 70vh;
     flex-grow: 5;
     /* text-align: center; */
     display: flex;
