@@ -356,7 +356,7 @@ div#schedule {
 		      var square = createElement('div', 'event-category ' + ev.color);
 		      var span = createElement('span',);
 		      var s_btn = createElement('button', 'dayevent', ev.eventName);
-		      s_btn.setAttribute('onclick', '');
+		      s_btn.setAttribute('onclick', "location.href='/phase4/board/lib/schedule_create_page.jsp?cid=<%out.print(circle.getId());%>&id=" + ev.sid + "'");
 		      span.appendChild(s_btn);
 
 		      div.appendChild(square);
@@ -456,7 +456,7 @@ div#schedule {
 				  day = getday.format(rs.getDate(6));
 				  str = rs.getString(8);
 				  str = str.replaceAll("\\\"\\\"", "\\\\\"");
-				  out.println("{ eventName: \"" + str + "\", calendar: '', color: '" + rs.getString(4) + "', month: '" + month + "', day: '" + day + "' },");
+				  out.println("{ sid: " + rs.getString(1) + ", eventName: \"" + str + "\", calendar: '', color: '" + rs.getString(4) + "', month: '" + month + "', day: '" + day + "' },");
 			  }
 			  %>
 		  ];
