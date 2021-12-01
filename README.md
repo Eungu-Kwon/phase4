@@ -57,8 +57,6 @@ This project's purpose is to create a make Repository with a collection of defau
 ### Depencies
  Write about need to install the software and how to install them 
 -->
-### 상위 폴더의 이름이 phase4이여야 합니다. 
-### chrome으로 실행해주세요!
 
 1. 상위 메뉴  `file -> import   -> Existing Projects into Workspace` 에서 경로를 지정해주세요 </br>(가끔 일부 파일이 불러와지지 않는 경우가 있기 때문에 해당 프로젝트 우클릭 -> refresh를 눌러주세요)
 2. `해당 프로젝트 우클릭 -> properties -> java Build Path`  에서  </br> `Libraries -> classpath` 에 `ojdbc`가 있는지 확인 후 없다면 `add External JARs` 를 통해 ojdbc를 추가해주세요.
@@ -73,6 +71,8 @@ This project's purpose is to create a make Repository with a collection of defau
  **`주의사항`**
  * 자바 패키지가 import 되지 않는 경우: 해당하는 import 코드를 지웠다가 다시 적으면 해결가능
     자바 패키지 : TimePack ,CirclePack
+    ##### 상위 폴더의 이름이 phase4이여야 합니다. 
+    ##### chrome으로 실행해주세요!
  
 
  
