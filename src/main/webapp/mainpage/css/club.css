@@ -28,7 +28,7 @@
 #all{
      display: flex;
     flex-direction: column;
-    border:1px solid red;
+   /*  border:1px solid red; */
    
    
 }
@@ -38,7 +38,7 @@
     height:200px;
     flex-grow: 2;
     height:300px;
-    border:1px solid rgb(7, 219, 0);
+  /*   border:1px solid rgb(7, 219, 0); */
 
    
 }
@@ -86,7 +86,7 @@
 .contents{
 
     flex-grow:5;
-    border:5px solid rgb(83, 81, 81);
+  /*   border:5px solid rgb(83, 81, 81); */
 
 }
 

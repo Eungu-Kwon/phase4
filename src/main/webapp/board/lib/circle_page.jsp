@@ -12,7 +12,6 @@ Description: A two-column, fixed-width design with dark color scheme.
 Version    : 1.0
 Released   : 20110329
 -->
-<
 <%	DBHelper db = DBHelper.getInstance();
 	Circle circle = new Circle(request.getParameter("cid"));
 	int tid = 1;
@@ -100,11 +99,6 @@ Released   : 20110329
     <div style="clear: both;">&nbsp;</div>
   </div>
 </div>
-<!-- end #content -->
-<div id="footer">
-  <p id="legal">Copyright &copy; 2007 The Coffee Shop. Designed by <a href="http://www.freecsstemplates.org/">Free CSS Templates</a></p>
-  <p id="brand">The Coffee Shop</p>
-</div>
-<!-- end #footer -->
+
 </body>
 </html>

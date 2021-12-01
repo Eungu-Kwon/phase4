@@ -3,7 +3,7 @@
 #menu {
    padding:0px;
     margin: 0 0;
-    background: cornflowerblue;
+    background: #797C7A;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -30,7 +30,7 @@
     width: 108px;
     height: 36px;
     padding: 20px 20px 0 20px;
-    background: cornflowerblue;
+    background: #797C7A;
     letter-spacing: -1px;
     text-align: center;
     font-size: 1.6em;
@@ -59,10 +59,15 @@
     /* height:200px; */
     flex-grow: 2;
     height:200px;
-    border:1px solid rgb(7, 219, 0);
+  /*   border:1px solid rgb(7, 219, 0); */
     background-color: antiquewhite;
 
 
+}
+
+#header h1{
+	margin-left:10px;
+	margin-top:10px;
 }
 
 
@@ -118,7 +123,7 @@
 
 }
 #posts{
-     border:1px solid rgb(7, 219, 0);
+   /*   border:1px solid rgb(7, 219, 0); */
      flex-grow:6;
      display: flex;
      flex-direction: column;
@@ -143,7 +148,7 @@
 }
 
 .post{
-    border:1px solid rgb(114, 226, 230);
+    border:1px solid antiquewhite;
 
 }
 
