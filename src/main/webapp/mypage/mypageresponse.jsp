@@ -18,13 +18,12 @@ String department = request.getParameter("department");
 DBHelper db = DBHelper.getInstance();
 
 String sql;
-if (pwd == null)
+if (!pwd.equals(""))
 	sql = "UPDATE USERS SET Pwd='" + pwd + "', Email='" + email + "', Birth_date=TO_DATE('" + date + "', 'yyyy-mm-dd'), Did=" + department + " WHERE Id='" + id + "'";
 else 
 	sql = "UPDATE USERS SET Email='" + email + "', Birth_date=TO_DATE('" + date + "', 'yyyy-mm-dd'), Did=" + department + " WHERE Id='" + id + "'";
 
 int result = db.updateSql(sql);
-
 if(result == -1){
 	out.println("<script>alert('입력창을 다시 확인해주세요!'); history.back();</script>");
 }
@@ -33,5 +32,4 @@ else {
 	String s= "location.href='/phase4/mainpage/lib/mainpage.jsp';";
 	out.println("<script>"+ s+"</script>");
 }
-
 %>
