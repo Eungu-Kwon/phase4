@@ -57,10 +57,7 @@ Released   : 20110329
 		</div>
 		<!-- end #menu -->
 		<div id="header">
-			<h1>The Coffee Shop</h1>
-			<h2>
-				<a href="#">Free CSS Templates</a>
-			</h2>
+			
 		</div>
 		<!-- end #header -->
 		<div id="content">
@@ -76,8 +73,7 @@ Released   : 20110329
 							<div class="article_board">
 								<div class="mb-3">
 									<label for="exampleFormControlInput1" class="form-label">Title</label>
-									<input type="title" class="form-control"
-										id="exampleFormControlInput1" name="title" value="<%=board.getTitle()%>">
+									<input type="title" class="form-control" id="exampleFormControlInput1" name="title" value="<%=board.getTitle()%>">
 								</div>
 								<div class="mb-3">
 									<label for="exampleFormControlTextarea1" class="form-label">Content</label>
@@ -119,13 +115,7 @@ Released   : 20110329
 		</div>
 	</div>
 	<!-- end #content -->
-	<div id="footer">
-		<p id="legal">
-			Copyright &copy; 2007 The Coffee Shop. Designed by <a
-				href="http://www.freecsstemplates.org/">Free CSS Templates</a>
-		</p>
-		<p id="brand">The Coffee Shop</p>
-	</div>
+	
 	<!-- end #footer -->
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

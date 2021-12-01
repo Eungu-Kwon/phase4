@@ -294,6 +294,8 @@ body {
   left: 14px;
 }
 
+
+
 .entry.blue:after { background: rgba(156, 202, 235, 1); }
 .entry.orange:after { background: rgba(247, 167, 0, 1); }
 .entry.green:after { background: rgba(153, 198, 109, 1); }

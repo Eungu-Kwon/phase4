@@ -46,10 +46,7 @@ Released   : 20110329
 		</div>
 		<!-- end #menu -->
 		<div id="header">
-			<h1>The Coffee Shop</h1>
-			<h2>
-				<a href="#">Free CSS Templates</a>
-			</h2>
+			
 		</div>
 		<!-- end #header -->
 		<div id="content">
@@ -107,15 +104,7 @@ Released   : 20110329
 			<div style="clear: both;">&nbsp;</div>
 		</div>
 	</div>
-	<!-- end #content -->
-	<div id="footer">
-		<p id="legal">
-			Copyright &copy; 2007 The Coffee Shop. Designed by <a
-				href="http://www.freecsstemplates.org/">Free CSS Templates</a>
-		</p>
-		<p id="brand">The Coffee Shop</p>
-	</div>
-	<!-- end #footer -->
+
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
