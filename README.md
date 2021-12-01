@@ -72,7 +72,7 @@ This project's purpose is to create a make Repository with a collection of defau
  * 자바 패키지가 import 되지 않는 경우: 해당하는 import 코드를 지웠다가 다시 적으면 해결가능
     자바 패키지 : TimePack ,CirclePack
 
-> **체험판 아이디** </br>
+**`체험판 아이디`** </br>
 > **동아리 이름** : 북모마모 독서소모임 </br>
 > **매니저** : 아이이디 </br>
 > **아이디:** iolycz345 </br>
