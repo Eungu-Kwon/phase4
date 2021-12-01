@@ -57,11 +57,16 @@ This project's purpose is to create a make Repository with a collection of defau
 ### Depencies
  Write about need to install the software and how to install them 
 -->
-### Installin
+### 상위 폴더의 이름이 phase4이여야 합니다. 
+### chrome으로 실행해주세요!
 
-1. Click `Use this template` button 
-2. Create New Repository
-3. Update Readme and Others(Other features are noted in comments.)
+1. 상위 메뉴  `file -> import   -> Existing Projects into Workspace` 에서 경로를 지정해주세요 </br>(가끔 일부 파일이 불러와지지 않는 경우가 있기 때문에 해당 프로젝트 우클릭 -> refresh를 눌러주세요)
+2. `해당 프로젝트 우클릭 -> properties -> java Build Path`  에서  </br> `Libraries -> classpath` 에 `ojdbc`가 있는지 확인 후 없다면 `add External JARs` 를 통해 ojdbc를 추가해주세요.
+3. Project Facets에서 Configuration항목에 Dynamic Web Module의 버전을 `3.1`로 변경해주시고 체크해주세요.
+4. Java와 JavaScript도 체크해주세요.  Java를 클릭한 후 우측 메뉴Runtimes에서 Apache Tomcat을 체크한 후 Apply해주세요.
+5. 코드 창 아래쪽 메뉴 중 Servers에서 Tomcat을 우클릭 후 Add and Remove 를 눌러 해당 프로젝트를 추가해주세요.
+6. 그후 `login.jsp` 혹은 `mainpage.jsp`를 run 하여 http://localhost:8080/phase4/mainpage/lib/mainpage.jsp 에서 시작하시면 됩니다.
+ 
 
 
 
