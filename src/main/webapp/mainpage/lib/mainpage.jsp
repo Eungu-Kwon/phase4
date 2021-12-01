@@ -13,7 +13,7 @@
 	 //  String id=""; 
 	 DBHelper dbhelper = DBHelper.getInstance();
 	 String query = "";
-	 ResultSet rs = dbhelper.runSql(query);
+	 ResultSet rs=null;
 	 
 	 request.setCharacterEncoding("UTF-8");
 	
