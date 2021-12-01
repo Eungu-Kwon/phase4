@@ -18,6 +18,7 @@ public class Circle {
 	public int categoryId;
 	public String categoryName;
 	public Date startDate;
+	public int curPerson;
 	public Circle(String id) {
 		String query = "SELECT *\r\n"
 				+ "FROM CIRCLE\r\n"
@@ -36,6 +37,7 @@ public class Circle {
 				startDate = rs.getDate(9);
 				endDate = rs.getDate(10);
 				thumbnail = rs.getString(11);
+				curPerson = rs.getInt(12);
 			}
 			rs.close();
 			query = "SELECT Cvalue FROM categorys WHERE id = " + categoryId;
@@ -51,6 +53,14 @@ public class Circle {
 		
 	}
 	
+	public int getCurPerson() {
+		return curPerson;
+	}
+
+	public void setCurPerson(int curPerson) {
+		this.curPerson = curPerson;
+	}
+
 	public int getId() {
 		return id;
 	}

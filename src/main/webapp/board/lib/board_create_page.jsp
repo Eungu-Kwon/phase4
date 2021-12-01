@@ -15,6 +15,7 @@ Released   : 20110329
 -->
 <% 
 	Board board = new Board(request.getParameter("cid"), request.getParameter("tid"));
+	DBHelper db = DBHelper.getInstance();
 %>
 
 
@@ -92,12 +93,10 @@ Released   : 20110329
 			<!-- end #posts -->
 			<div id="links">
 				<ul>
-					<li>
-						<h2>Archives</h2>
-						<ul>
-							<li><a href="#">Donec Dictum Metus</a></li>
-						</ul>
-					</li>
+					<%
+             out.println("<li><a href=\"schedule.jsp?cid=" + request.getParameter("cid") + "\">스케줄</a></li>");
+             out.println(Tab.showTabList(db,Integer.parseInt(request.getParameter("cid"))));
+             %>
 				</ul>
 			</div>
 			<!-- end #links -->
