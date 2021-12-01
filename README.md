@@ -71,21 +71,17 @@ This project's purpose is to create a make Repository with a collection of defau
  **`주의사항`**
  * 자바 패키지가 import 되지 않는 경우: 해당하는 import 코드를 지웠다가 다시 적으면 해결가능
     자바 패키지 : TimePack ,CirclePack
--------
-> **체험판 아이디**
-> **동아리 이름** : 북모마모 독서소모임
-> **매니저** : 아이이디
-> **아이디:** iolycz345
-> **패스워드:**  b668b636
+
+> **체험판 아이디** </br>
+> **동아리 이름** : 북모마모 독서소모임 </br>
+> **매니저** : 아이이디 </br>
+> **아이디:** iolycz345 </br>
+> **패스워드:**  b668b636 </br>
 이 계정으로 접속해보시고 매니저 권한으로 더 상세한 기능에 접근해보세요
 실제로 회원가입하여 저희 서비스를 이용해보세요!
     
  
-
- 
-  
-
-
+-------
 ## Authors
 **Kyungpook-National University Student** 🧑‍💻👨‍💻👩‍💻
 <img src="https://user-images.githubusercontent.com/68631158/144125382-f0fb0165-9eb6-46b7-8448-2a47960db06f.png" width="200px" height="30%" title="px(픽셀) 크기 설정" alt="RubberDuck"></img> </br>
