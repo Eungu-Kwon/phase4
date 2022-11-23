@@ -1,4 +1,5 @@
 # ♠️ Final DB TeamProject Name : All Club's in KNU
+## KNU Club Community 
 ## Index
   - [Overview](#overview) <!--전체적인 기능 설명 (우리 프로젝트 소개)-->
   - [Settings](#settings) <!--제작환경-->
