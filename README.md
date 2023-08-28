@@ -84,7 +84,9 @@ This project's purpose is to create a make Repository with a collection of defau
 ## ER Diagram & DB Schema
 
 <img src="https://github.com/Eungu-Kwon/phase4/assets/68631158/c7dc1e88-d5af-4e87-957d-98c716e42244" width="60%" height="40%" title="px(픽셀) 크기 설정" alt="RubberDuck"></img>
-<img src="https://github.com/Eungu-Kwon/phase4/assets/68631158/c7dc1e88-d5af-4e87-957d-98c716e42244" width="60%" height="40%" title="px(픽셀) 크기 설정" alt="RubberDuck"></img>
+<img src="https://github.com/Eungu-Kwon/phase4/assets/68631158/8436fd0f-5c9d-48a0-93a4-58a7ed4fa4bb" width="60%" height="40%" title="px(픽셀) 크기 설정" alt="RubberDuck"></img>
+
+
 
 
 
