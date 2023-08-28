@@ -33,9 +33,7 @@ This project's purpose is to create a make Repository with a collection of defau
 2. 동아리 쉽게 만들고 동아리 운영하자!
   > 동아리를 등록시  개별 커뮤니티 제공
 4. 개별 동아리에서 자기 동아리만의 커뮤니티 꾸리기!
-  >맞춤형 카테고리, 글 올리기, 스케줄 등록하기 등 여러  기능 제공 
-
-  
+  >맞춤형 카테고리, 글 올리기, 스케줄 등록하기 등 여러  기능 제공
 
 
 
@@ -82,6 +80,15 @@ This project's purpose is to create a make Repository with a collection of defau
 실제로 회원가입하여 저희 서비스를 이용해보세요!
     
  
+-------
+## DB 설계
+
+<img src="https://github.com/Eungu-Kwon/phase4/assets/68631158/c7dc1e88-d5af-4e87-957d-98c716e42244" width="40%" height="30%" title="px(픽셀) 크기 설정" alt="RubberDuck"></img>
+
+<img width="816" alt="table" src="https://github.com/Eungu-Kwon/phase4/assets/68631158/1604d0a3-3a10-4c02-84c9-30bf8ab66692">
+
+
+
 -------
 ## Authors
 **Kyungpook-National University Student** 🧑‍💻👨‍💻👩‍💻
